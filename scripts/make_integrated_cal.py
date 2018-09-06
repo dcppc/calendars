@@ -6,9 +6,17 @@ import requests
 # https://icalendar.org/validator.html
 
 SCRIPT_DIR = os.path.split(os.path.abspath(__file__))[0]
+
 ICSLINKS_DIR = os.path.join(SCRIPT_DIR,'..')
 ICSLINKS_FILE = 'ics_links.txt'
-ICS_DIR = os.path.join(SCRIPT_DIR,'..','samples')
+
+HTDOCS_DIR = '/www/calendars.nihdatacommons.us/htdocs'
+
+### # Test
+### ICS_DIR = os.path.join(SCRIPT_DIR,'..','samples')
+# Real deal
+ICS_DIR = os.path.join(HTDOCS_DIR,'..','samples')
+# Leave this alone
 ICS_FILE = 'integrated_calendar.ics'
 
 def main():
