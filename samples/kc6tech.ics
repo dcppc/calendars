@@ -1,0 +1,299 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Groups.io Inc//Groups.io Calendar//EN
+METHOD:PUBLISH
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:calendar.9284.329486@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180918T150000Z
+DTEND:20180918T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.327237@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180911T150000Z
+DTEND:20180911T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.311498@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180904T150000Z
+DTEND:20180904T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.311497@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180828T150000Z
+DTEND:20180828T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.311496@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180821T150000Z
+DTEND:20180821T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.311495@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180814T150000Z
+DTEND:20180814T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275143@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180807T150000Z
+DTEND:20180807T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275142@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180731T150000Z
+DTEND:20180731T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275141@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180724T150000Z
+DTEND:20180724T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275140@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180717T150000Z
+DTEND:20180717T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275139@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180710T150000Z
+DTEND:20180710T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275133@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180703T150000Z
+DTEND:20180703T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275132@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180626T150000Z
+DTEND:20180626T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275131@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180619T150000Z
+DTEND:20180619T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.275130@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180612T150000Z
+DTEND:20180612T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.271467@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180605T150000Z
+DTEND:20180605T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.271466@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180529T150000Z
+DTEND:20180529T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.271465@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180522T150000Z
+DTEND:20180522T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.271464@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180515T150000Z
+DTEND:20180515T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.271463@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180508T150000Z
+DTEND:20180508T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.271462@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180501T150000Z
+DTEND:20180501T160000Z
+SUMMARY:NIH Data Commons KC6 Meeting
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.270137@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180424T150000Z
+DTEND:20180424T160000Z
+SUMMARY:KC6 Meeting
+DESCRIPTION:KC6 meeting to discuss next steps on both technology and on g
+ overnance.
+
+To join the meeting on a computer or mobile phone: https://bluejeans.com/
+ 916588108?src=calendarLink ( https://bluejeans.com/916588108?src=calendar
+ Link )
+
+ 
+
+Karen Davis has invited you to a video meeting.
+
+-----------------------------------
+
+Phone Dial-in
+
++1.408.317.9254 (BlueJeans U.S. Toll)
+
++1.866.226.4650 (US Toll Free)
+
+Global Numbers: http://bluejeans.com/numbers ( http://bluejeans.com/numbe
+ rs )
+
+ 
+
+Meeting ID: 916 588 108
+LOCATION:https://bluejeans.com/916588108
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.250925@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180320T150000Z
+DTEND:20180320T160000Z
+SUMMARY:KC6 full group meeting
+DESCRIPTION:This meeting is for all members of KC6 to meet - agenda forth
+ coming. 
+Join from PC, Mac, Linux, iOS or Android: https://uchealth.zoom.us/j/ 43
+ 1902987 ( https://uchealth.zoom.us/j/431902987 )
+ 
+Or iPhone one-tap :
+    US: +16699006833 ( tel:(669)%20900-6833 ) ,,431902987#  or +140
+ 86380968 ( tel:(408)%20638-0968 ) ,,431902987#
+Or Telephone:
+    Dial(for higher quality, dial a number based on your current locat
+ ion):
+        US: +1 669 900 6833 ( tel:(669)%20900-6833 )  or +1 408
+  638 0968 ( tel:(408)%20638-0968 )  or +1 646 876 9923 ( tel:(646)%2087
+ 6-9923 )
+    Meeting ID: 431 902 987
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:calendar.9284.248555@groups.io
+DTSTAMP:20180905T171235Z
+ORGANIZER;CN=kc6tech@dcppc.groups.io Group:mailto:kc6tech@dcppc.groups.io
+DTSTART:20180313T150000Z
+DTEND:20180313T160000Z
+SUMMARY:KC6 Tech Meeting
+DESCRIPTION:Join from PC, Mac, Linux, iOS or Android: https://uchealth.z
+ oom.us/j/431902987 ( https://hsmail.ucsd.edu/owa/redir.aspx?C=b6phmFxEVPj
+ 3m2Kt05IAQ7vWJ05gP6ZUnZRlLJHNX7AjYVNMzYLVCA..&URL=https%3a%2f%2fuchealth.
+ zoom.us%2fj%2f431902987 )
+ 
+Or iPhone one-tap :
+    US: +16699006833,,431902987#  or +14086380968,,431902987#
+Or Telephone:
+    Dial(for higher quality, dial a number based on your current locat
+ ion):
+        US: +1 669 900 6833  or +1 408 638 0968  or +1 646 876 9
+ 923
+    Meeting ID: 431 902 987
+LOCATION:Zoom
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR
+
