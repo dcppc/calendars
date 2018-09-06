@@ -17,5 +17,15 @@ It is meant to be run on a server or a Heroku node.
 * `heroku-pages` - (does not exist yet) once the calendar service is
   deployed to Heroku, this branch will contain the content hosted by Heroku.
 
+## Make Integrated Calendar
+
+To make the integrated calendar .ics file, run the `make_integrated_calendar.py`
+script in the `scripts/` directory:
+
+```
+python scripts/make_integrated_calendar.py
+```
+
+This will output the .ics file to `samples/integrated_calendar.ics`.
 
 
