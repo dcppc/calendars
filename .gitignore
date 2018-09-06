@@ -1,5 +1,9 @@
 vp/
 htdocs/
+
+ # no secret credentials plz
+*.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
