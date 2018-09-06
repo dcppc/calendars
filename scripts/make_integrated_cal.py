@@ -15,7 +15,7 @@ HTDOCS_DIR = '/www/calendars.nihdatacommons.us/htdocs'
 ### # Test
 ### ICS_DIR = os.path.join(SCRIPT_DIR,'..','samples')
 # Real deal
-ICS_DIR = os.path.join(HTDOCS_DIR,'..','samples')
+ICS_DIR = os.path.join(HTDOCS_DIR)
 # Leave this alone
 ICS_FILE = 'integrated_calendar.ics'
 
