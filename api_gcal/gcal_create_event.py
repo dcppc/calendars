@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import sys 
 from pprint import pprint
-from oauth2client import client
-from googleapiclient import sample_tools
+from apiclient.discovery import build
+from httplib2 import Http
+from oauth2client import file, client, tools
 
 # sample_tools is where they tucked away all the magic and swept it all under the rug
 # https://github.com/google/google-api-python-client/blob/master/googleapiclient/sample_tools.py
@@ -14,21 +15,25 @@ from googleapiclient import sample_tools
 # https://developers.google.com/resources/api-libraries/documentation/calendar/v3/python/latest/
 
 def main(argv):
-    # Authenticate and construct service.
-    service, flags = sample_tools.init(
-        argv, 'calendar', 'v3', 
-        __doc__, __file__,
-        scope='https://www.googleapis.com/auth/calendar')
+    SCOPES = 'https://www.googleapis.com/auth/calendar'
+    store = file.Storage('credentials.json')
+    creds = store.get()
+    if not creds or creds.invalid:
+        flow = client.flow_from_clientsecrets('client_secrets.json', SCOPES)
+        creds = tools.run_flow(flow, store)
+    service = build('calendar', 'v3', http=creds.authorize(Http()))
+
 
     try:
         calendar = {
-            'summary': 'This is a test calendar',
+            'summary': 'Test Calendar',
             'timeZone': 'America/Los_Angeles'
         }
         created_calendar = service.calendars().insert(body=calendar).execute()
         print(created_calendar['id'])
 
     except client.AccessTokenRefreshError:
+        print('ERROR: Could not create test calendar')
         print('The credentials have been revoked or expired, please re-run'
               'the application to re-authorize.')
 
@@ -85,8 +90,30 @@ def main(argv):
         #       },
         # 
         #
-        event = {}
+        event = {
+                'start' : {
+                    'date' : '2018-09-05',
+                    'datetime' : '20180905T173000Z'
+                },
+                'end' : {
+                    'date' : '2018-09-05',
+                    'datetime' : '20180905T183000Z'
+                },
+                'htmlLink' : 'https://dcppc.groups.io/g/kc6tech/viewevent?repeatid=6402&eventid=311498&calstart=2018-09-04',
+                'sequence' : 1,
+                'created' : '20180906T192652Z',
+                'location' : 'The Moon',
+                'organizer' : {
+                    'email' : 'sample@email.com',
+                    'displayName' : 'Some Person'
+                }
+        }
         created_events = created_calendar.events().insert(body=event).execute()
+
+    except client.AccessTokenRefreshError:
+        print('ERROR: Could not create test event')
+        print('The credentials have been revoked or expired, please re-run'
+              'the application to re-authorize.')
 
 if __name__ == '__main__':
     main(sys.argv)
