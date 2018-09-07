@@ -16,25 +16,38 @@ This file contains utility methods for interfacing
 with the Google Calendar API.
 
 
-Methods:
+Utility Methods:
 
-get_service() - provides an API object (service) to allo
+get_service() - provides an API object (service) to allow
 interaction with the Google Calendar API.
 
-create_calendar() - create a calendar, takes a summary and
-time zone as arguments.
+save_cal_id() - save the calendar id to the calendar id file.
+
+load_cal_id() - load the calendar id from the calendar id file.
+
+
+Calendar Methods:
+
+create_calendar() - create a calendar, take a summary and
+time zone as arguments, save to calendar id file.
+
+get_event_ids() - get a set of event ids from a specified
+calendar id.
+
+
+
 
 
 Constants:
 
 
-CAL_NAME_FILE - the name of the file containing the
+CAL_ID_FILE - the name of the file containing the
 id of the temporary calendar created. Used to modify
 events on the same calendar later.
 """
 
 
-CAL_NAME_FILE = 'calendar_name.txt'
+CAL_ID_FILE = 'calendar_name.txt'
 
 
 def get_service():
@@ -51,6 +64,35 @@ def get_service():
         creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
     return service
+
+
+def save_cal_id(cal_id):
+    """
+    Save the calendar id in the calendar id file
+    """
+    with open(CAL_ID_FILE,'w') as f:
+        f.write(calendar_id)
+    print("Stored calendar id in file %s"%(CAL_ID_FILE))
+
+
+def load_cal_id():
+    """
+    Load the calendar id in the calendar id file
+    """
+    if not os.path.exists(CAL_ID_FILE):
+        err = "ERROR: Could not load calendar id from file %s: "%(CAL_ID_FILE)
+        err += "No file"
+        raise Exception(err)
+
+    with open(CAL_ID_FILE,'r') as f:
+        calendar_id = f.read()
+
+    if calendar_id == '':
+        err = "ERROR: Could not load calendar id from file %s: "%(CAL_ID_FILE)
+        err += "Empty file"
+        raise Exception(err)
+
+    return calendar_id
 
 
 def create_calendar(summary,timeZone="America/New_York"):
@@ -88,12 +130,6 @@ def create_calendar(summary,timeZone="America/New_York"):
         err += 'the application to re-authorize.'
         raise Exception(err)
 
-    with open(CAL_NAME_FILE,'w') as f:
-        f.write(calendar_id)
-
-    print("Stored calendar id in file %s"%(CAL_NAME_FILE))
-
-
 
 
 def get_event_ids(calendar_id):
@@ -101,25 +137,11 @@ def get_event_ids(calendar_id):
     Return a set containing all unique event IDs
     for events on this particular calendar.
     """
-
     # Get API
     service = get_service()
 
-    if not os.path.exists(CAL_NAME_FILE):
-        err = "ERROR: Could not load calendar id from file %s: "%(CAL_NAME_FILE)
-        err += "No file"
-        raise Exception(err)
+    event_ids = set()
 
-    with open(CAL_NAME_FILE,'r') as f:
-        calendar_id = f.read()
-
-    if calendar_id == '':
-        err = "ERROR: Could not load calendar id from file %s: "%(CAL_NAME_FILE)
-        err += "Empty file"
-        raise Exception(err)
-
-
-    max_time = '2018-11-01T00:00:00Z'
     page_token = None
     while True:
 
@@ -128,14 +150,20 @@ def get_event_ids(calendar_id):
 
             cal_id = calendar_list_entry['id']
 
+            max_time = '2018-11-01T00:00:00Z'
             events_list = service.events().list(calendarId=cal_id, timeMax=max_time).execute()
             for events_list_entry in events_list['items']:
 
-                print(events_list_entry)
+                event_ids.add(events_list_entry['id'])
 
         page_token = calendar_list.get('nextPageToken')
         if not page_token:
             break
+
+    print("Extracted events from calendar %s:"%(calendar_id))
+    print(event_ids)
+    return event_ids
+
 
 
 
