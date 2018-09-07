@@ -128,11 +128,12 @@ def populate_calendar():
         #       },
         # 
         #
-        # '20180905T173000Z'
+
         #mytz = 'US/Eastern'
+        #eastern = pytz.timezone(mytz)
+
         mytz = 'UTC'
         utc = pytz.utc
-        eastern = pytz.timezone(mytz)
 
         print("Creating event...")
         startdt =   utc.localize(datetime.datetime.strptime('2018-09-05 17:30:00','%Y-%m-%d %H:%M:%S'))
