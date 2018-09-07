@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-import sys 
+import sys, os
+import datetime
+import pytz
 from pprint import pprint
 from apiclient.discovery import build
 from httplib2 import Http
@@ -14,7 +16,7 @@ from oauth2client import file, client, tools
 # pydoc:
 # https://developers.google.com/resources/api-libraries/documentation/calendar/v3/python/latest/
 
-def main(argv):
+def get_service():
     SCOPES = 'https://www.googleapis.com/auth/calendar'
     store = file.Storage('credentials.json')
     creds = store.get()
@@ -22,20 +24,56 @@ def main(argv):
         flow = client.flow_from_clientsecrets('client_secrets.json', SCOPES)
         creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
+    return service
 
+def create_calendar():
 
+    # Get API
+    service = get_service()
+
+    calendar_id = None
     try:
         calendar = {
             'summary': 'Test Calendar',
             'timeZone': 'America/Los_Angeles'
         }
+        print("Creating calendar...")
         created_calendar = service.calendars().insert(body=calendar).execute()
-        print(created_calendar['id'])
+        calendar_id = created_calendar['id']
+        print("Done. Created calendar with id: %s"%(calendar_id))
 
     except client.AccessTokenRefreshError:
-        print('ERROR: Could not create test calendar')
-        print('The credentials have been revoked or expired, please re-run'
-              'the application to re-authorize.')
+        err = 'ERROR: Could not create test calendar\n'
+        err += 'The credentials have been revoked or expired, please re-run '
+        err += 'the application to re-authorize.'
+        raise Exception(err)
+
+    with open('calendar_name.txt','w') as f:
+        f.write(calendar_id)
+
+
+def populate_calendar():
+
+    calendar_file = 'calendar_name.txt'
+
+    if not os.path.exists(calendar_file):
+        err = "ERROR: Could not load calendar id from file %s: "%(calendar_file)
+        err += "No file"
+        raise Exception(err)
+
+    with open('calendar_name.txt','r') as f:
+        calendar_id = f.read()
+
+    if calendar_id == '':
+        err = "ERROR: Could not load calendar id from file %s: "%(calendar_file)
+        err += "Empty file"
+        raise Exception(err)
+
+    calendar_id = calendar_id.strip()
+    print("Adding events to calendar %s"%(calendar_id))
+
+    # Get API
+    service = get_service()
 
     try:
         # see https://developers.google.com/resources/api-libraries/documentation/calendar/v3/python/latest/calendar_v3.events.html#insert
@@ -90,32 +128,43 @@ def main(argv):
         #       },
         # 
         #
+        # '20180905T173000Z'
+        #mytz = 'US/Eastern'
+        mytz = 'UTC'
+        utc = pytz.utc
+        eastern = pytz.timezone(mytz)
+
+        print("Creating event...")
+        startdt =   utc.localize(datetime.datetime.strptime('2018-09-05 17:30:00','%Y-%m-%d %H:%M:%S'))
+        enddt =     utc.localize(datetime.datetime.strptime('2018-09-05 18:30:00','%Y-%m-%d %H:%M:%S'))
+        createddt = utc.localize(datetime.datetime.strptime('2018-08-11 10:17:23','%Y-%m-%d %H:%M:%S'))
         event = {
+                'summary' : 'Something Something Meeting',
+                'description' : 'Well I say old chap, check out the link like a good sport, here you go: https://dcppc.groups.io/g/kc6tech/viewevent?repeatid=6402&eventid=311498&calstart=2018-09-04',
                 'start' : {
-                    'date' : '2018-09-05',
-                    'datetime' : '20180905T173000Z'
+                    'dateTime' : startdt.isoformat("T"),
+                    'timeZone' : mytz,
                 },
                 'end' : {
-                    'date' : '2018-09-05',
-                    'datetime' : '20180905T183000Z'
+                    'dateTime' : enddt.isoformat("T"),
+                    'timeZone' : mytz,
                 },
                 'htmlLink' : 'https://dcppc.groups.io/g/kc6tech/viewevent?repeatid=6402&eventid=311498&calstart=2018-09-04',
                 'sequence' : 1,
-                'created' : '20180906T192652Z',
                 'location' : 'The Moon',
                 'organizer' : {
                     'email' : 'sample@email.com',
                     'displayName' : 'Some Person'
                 }
         }
-        created_events = created_calendar.events().insert(body=event).execute()
+        created_event = service.events().insert(calendarId=calendar_id, body=event).execute()
+        print("Done. Created event with id: %s"%(created_event['id']))
 
     except client.AccessTokenRefreshError:
-        print('ERROR: Could not create test event')
-        print('The credentials have been revoked or expired, please re-run'
-              'the application to re-authorize.')
+        err = 'ERROR: Could not create test event\n'
+        err += 'The credentials have been revoked or expired, please re-run '
+        err += 'the application to re-authorize.'
 
 if __name__ == '__main__':
-    main(sys.argv)
-
-
+    #create_calendar()
+    populate_calendar()
