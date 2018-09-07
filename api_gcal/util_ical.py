@@ -77,7 +77,7 @@ def ics_components_map(ics, components_map={}):
     into a map of uid to filtered Event() objects
     (VEVENT components).
     """
-    for e in ics_component_generator(ics):
+    for e in ics_components_generator(ics):
         components_map[e['UID']] = e
     return components_map
 
@@ -96,15 +96,15 @@ def ics_components_generator(ics):
             # Custom processing (extraction):
             event_url = get_event_url(component)
 
-                e = Event()
-                for k in component.keys():
-                    if k=='DESCRIPTION':
-                        v = event_url
-                    else:
-                        v = component[k]
-                    e.add(k,v)
+            e = Event()
+            for k in component.keys():
+                if k=='DESCRIPTION':
+                    v = event_url
+                else:
+                    v = component[k]
+                e.add(k,v)
 
-                yield e
+            yield e
 
 
 def get_event_url(vevent):
@@ -134,13 +134,28 @@ def get_event_url(vevent):
     return event_url
 
 
+
+
+def get_ical_contents(ics_file):
+    """
+    Given an .ics file, extract the contents as a string
+    """
+    print("Extracting contents of calendar in .ics file %s"%(ics_file))
+    with open(ics_file,'r') as f:
+        result = f.read()
+        #result = re.sub('\r\n','\n',result)
+    print("Done extracting contents.")
+    return result
+
+
+
 def get_calendar_contents(ics_url):
     """
     This takes a URL for an .ics calendar file
     and returns the .ics file contents as a string
     """
     url = ics_url.strip()
-    print("Adding calendar %s to integrated calendar"%(url))
+    print("Extracting contents of calendar at URL %s"%(url))
     r = requests.get(url)
 
     if r.status_code==200:
@@ -152,7 +167,7 @@ def get_calendar_contents(ics_url):
         content = r.content
         try:
             result = content.decode('utf-8')
-            result = re.sub('\r\n','\n',result)
+            #result = re.sub('\r\n','\n',result)
             print(" [+] Success!")
 
             return result
@@ -178,4 +193,23 @@ def get_calendar_contents(ics_url):
         print(" [-] FAILED with status code %s"%(r.status_code))
         print(r.content.decode('utf-8'))
         return None
+
+
+
+
+def get_safe_event_id(event_id):
+    safe_event_id = event_id
+    safe_event_id = re.sub('[^a-zA-Z0-9]','',safe_event_id)
+    return safe_event_id
+
+
+
+def vevent_decode(vstr):
+    try:
+        return vstr.to_ical().decode('utf-8')
+    except AttributeError:
+        return vstr.decode('utf-8')
+
+
+
 

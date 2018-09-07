@@ -1,10 +1,13 @@
-import sys, os
+import sys, os, re
 import datetime
 import pytz
 from pprint import pprint
+import apiclient
 from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+
+from util_ical import *
 
 """
 Google Calendar API Utilities
@@ -42,6 +45,8 @@ Constants:
 
 CAL_ID_FILE = 'calendar_name.txt'
 
+FUTURE = '2018-11-01T00:00:00Z'
+
 
 def get_service():
     """
@@ -74,7 +79,7 @@ def save_cal_id(cal_id):
     Save the calendar id in the calendar id file
     """
     with open(CAL_ID_FILE,'w') as f:
-        f.write(calendar_id)
+        f.write(cal_id)
     print("Stored calendar id in file %s"%(CAL_ID_FILE))
 
 
@@ -116,7 +121,8 @@ def create_gcal(summary,timeZone="America/New_York"):
     if os.path.exists(CAL_ID_FILE):
         # Already created a calendar, so load its id
         print("Found a calendar ID file at %s"%(CAL_ID_FILE))
-        return
+        calendar_id = load_cal_id()
+        return calendar_id
 
     else:
         # Create a new calendar
@@ -144,6 +150,8 @@ def create_gcal(summary,timeZone="America/New_York"):
 
         print("Finished creating a calendar id file at %s"%(CAL_ID_FILE))
 
+    return calendar_id
+
 
 
 def destroy_gcal(calendar_id):
@@ -154,13 +162,73 @@ def destroy_gcal(calendar_id):
 
 
 
+
+
+def update_gcal_from_components_map(calendar_id, components_map):
+    """
+    Iterate through every event in components map
+    and check if this event exists on the Google Calendar.
+
+    If the event does not exist, create it.
+
+    If the event does exist, compare the component event
+    and the Google Calendar event to see if Google Calendar
+    needs to be updated.
+    """
+    if calendar_id is None:
+        err = "ERROR: You passed a null calendar_id to populate_gcal_from_components_map()"
+        raise Exception(err)
+
+    # Get API
+    service = get_service()
+
+    gcal_event_ids = [gce['id'] for gce in gcal_components_generator(calendar_id)]
+    ical_event_ids = [get_safe_event_id(vevent_decode(e)) for e in components_map]
+
+    print(gcal_event_ids)
+    print(ical_event_ids)
+
+    #print("Populating Google Calendar with events from components_map...")
+    #print("Calendar id: %s"%(calendar_id))
+    #for k in components_map.keys():
+    #    print(" > Processing event %s"%k)
+    #    e = components_map[k]
+    #    gce = ics2gcal_event(e)
+
+    #    # Check if this event already exists in the calendar
+
+
+
+
+
 def populate_gcal_from_components_map(calendar_id, components_map):
-    # This is where we get an instance of cal calendar_id
-    # and iterate through each event in components_map
-    # and add each event to the calendar
-    pass
+    """
+    Iterate through every event in components map
+    and add it as a new event to the Google Calendar
+    """
+    if calendar_id is None:
+        err = "ERROR: You passed a null calendar_id to populate_gcal_from_components_map()"
+        raise Exception(err)
 
+    # Get API
+    service = get_service()
 
+    print("Populating Google Calendar with events from components_map...")
+    print("Calendar id: %s"%(calendar_id))
+    for k in components_map.keys():
+        print(" > Processing event %s"%k)
+        e = components_map[k]
+        gce = ics2gcal_event(e)
+        try:
+            created_event = service.events().insert(calendarId=calendar_id, body=gce).execute()
+        except apiclient.errors.HttpError:
+            err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
+            err += "You may have created this event already, or there may be a problem with the calendar/event id.\n"
+            err += "Calendar id: %s\n"%(calendar_id)
+            err += "Event id: %s\n"%(gce['id'])
+            raise Exception(err)
+
+        print("Created event on calendar %s with event id: %s"%(calendar_id, created_event['id']))
 
 
 
@@ -188,5 +256,49 @@ def gcal_components_generator(calendar_id):
         page_token = events_list.get('nextPageToken')
         if not page_token:
             break
+
+
+
+def ics2gcal_event(vevent):
+
+    if 'UID' not in vevent.keys():
+        err = "ERROR: Passed a vevent to ics2gcal_event() that has no UID!\n"
+        err += vevent.to_ical().decode('utf-8')
+        raise Exception(err)
+
+    timezone = 'UTC'
+    utc = pytz.utc
+
+    startdt = utc.localize(datetime.datetime.strptime(vevent_decode(vevent['DTSTART']), "%Y%m%dT%H%M%SZ"))
+    enddt =   utc.localize(datetime.datetime.strptime(vevent_decode(vevent['DTEND']),   "%Y%m%dT%H%M%SZ"))
+
+    event_id = get_safe_event_id(vevent_decode(vevent['UID']))
+    description = get_event_url(vevent)
+
+    keys = ['SUMMARY','SEQUENCE','LOCATION','ORGANIZER']
+    for key in keys:
+        if key not in vevent:
+            vevent[key] = b''
+
+    gcal_event = {
+            "summary" : vevent_decode(vevent['SUMMARY']),
+            "start" : {
+                "timeZome" : timezone,
+                "dateTime" : startdt.isoformat("T"),
+            },
+            "end" : {
+                "timeZome" : timezone,
+                "dateTime" : enddt.isoformat("T"),
+            },
+            "id" :          event_id,
+            "sequence" :    vevent_decode(vevent['SEQUENCE']),
+            "location" :    vevent_decode(vevent['LOCATION']),
+            "description" : description,
+            "organizer" : {
+                "displayName" : vevent_decode(vevent['ORGANIZER']),
+            }
+    }
+
+    return gcal_event
 
 
