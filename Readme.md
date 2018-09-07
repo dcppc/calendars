@@ -23,9 +23,27 @@ To make the integrated calendar .ics file, run the `make_integrated_calendar.py`
 script in the `scripts/` directory:
 
 ```
-python scripts/make_integrated_calendar.py
+python scripts/make_integrated_cal.py
 ```
 
-This will output the .ics file to `samples/integrated_calendar.ics`.
+For testing, you can output the .ics file to samples; for the real deal,
+the calendar file is deployed to the `htdocs/` directory.
+
+## Deploy gh-pages branch to calendars.nihdatacommons.us
+
+To deploy the `gh-pages` branch to the live site at <https://calendars.nihdatacommons.us>,
+we `git clone` the `gh-pages` branch in such a way that the
+contents of the branch (the static content that should be
+hosted by nginx) is stored separate from the contents of 
+the `.git` directory (which should not be hosted by nginx).
+
+To clone the repo with this directory structure, use the
+`git_clone_calendars_htdocs.sh` script, which clones to
+`/www/calendars.nihdatacommons.us/` and stores the static
+content in `htdocs/` and the `.git` directory at `git/`.
+
+To update the repo with the latest changes to the `gh-pages`
+branch, run `git pull` using the wrapper script,
+`git_pull_calendars_htdocs.sh`.
 
 
