@@ -17,7 +17,7 @@ It is meant to be run on a server or a Heroku node.
 * `heroku-pages` - (does not exist yet) once the calendar service is
   deployed to Heroku, this branch will contain the content hosted by Heroku.
 
-## Make Integrated Calendar
+## Make integrated calendar .ics file
 
 To make the integrated calendar .ics file, run the `make_integrated_calendar.py`
 script in the `scripts/` directory:
@@ -28,6 +28,12 @@ python scripts/make_integrated_cal.py
 
 For testing, you can output the .ics file to samples; for the real deal,
 the calendar file is deployed to the `htdocs/` directory.
+
+## Google Calendar API sample scripts
+
+See the `api_gcal/` directory for scripts containing examples of interacting
+with the Google Calendar API. These will eventually be used to assemble a
+Google Calendar script in the `scripts/` folder.
 
 ## Deploy gh-pages branch to calendars.nihdatacommons.us
 
