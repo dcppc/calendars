@@ -44,8 +44,42 @@ Constants:
 
 
 CAL_ID_FILE = 'calendar_name.txt'
-
 FUTURE = '2018-11-01T00:00:00Z'
+
+
+def does_calendar_exist(calendar_id):
+    """
+    Boolean: does this calendar_id exist?
+    """
+    service = get_service()
+    page_token = None
+    while True:
+        calendar_list = service.calendarList().list(
+            pageToken=page_token
+        ).execute()
+        for calendar_list_entry in calendar_list['items']:
+            if calendar_list_entry['id']==calendar_id:
+                return True
+        page_token = calendar_list.get('nextPageToken')
+        if not page_token:
+            return False
+
+
+def event_exists(calendar_id, event_id):
+    """
+    Boolean: does the event with id event_id
+    exist on calendar with id calendar_id?
+    """
+    service = get_service()
+    events_list = service.events().list(calendarId=calendar_id, timeMax=FUTURE).execute()
+
+    for events_list_entry in events_list['items']:
+        if events_list_entry['id']==event_id:
+            return True
+
+    page_token = calendar_list.get('nextPageToken')
+    if not page_token:
+        return False
 
 
 def get_service():
@@ -100,6 +134,7 @@ def load_cal_id():
         err += "Empty file"
         raise Exception(err)
 
+    print("Loaded calendar id from file %s"%(CAL_ID_FILE))
     return calendar_id
 
 
@@ -162,8 +197,6 @@ def destroy_gcal(calendar_id):
 
 
 
-
-
 def update_gcal_from_components_map(calendar_id, components_map):
     """
     Iterate through every event in components map
@@ -199,8 +232,6 @@ def update_gcal_from_components_map(calendar_id, components_map):
 
 
 
-
-
 def populate_gcal_from_components_map(calendar_id, components_map):
     """
     Iterate through every event in components map
@@ -222,11 +253,18 @@ def populate_gcal_from_components_map(calendar_id, components_map):
         try:
             created_event = service.events().insert(calendarId=calendar_id, body=gce).execute()
         except apiclient.errors.HttpError:
-            err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
-            err += "You may have created this event already, or there may be a problem with the calendar/event id.\n"
-            err += "Calendar id: %s\n"%(calendar_id)
-            err += "Event id: %s\n"%(gce['id'])
-            raise Exception(err)
+            if event_exists(calendar_id, gce['id']):
+                err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
+                err += "This event already exists!\n"
+                err += "Calendar id: %s\n"%(calendar_id)
+                err += "Event id: %s\n"%(gce['id'])
+                raise Exception(err)
+            else:
+                err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
+                err += "There may be a problem with the calendar/event id.\n"
+                err += "Calendar id: %s\n"%(calendar_id)
+                err += "Event id: %s\n"%(gce['id'])
+                raise Exception(err)
 
         print("Created event on calendar %s with event id: %s"%(calendar_id, created_event['id']))
 
