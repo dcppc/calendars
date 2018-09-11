@@ -1,13 +1,15 @@
-import sys, os, re
-import datetime
-import pytz
-from pprint import pprint
 import apiclient
 from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 
+from collections import OrderedDict
 from util_ical import *
+
+from pprint import pprint
+import sys, os, re
+import datetime
+import pytz
 
 """
 Google Calendar API Utilities
@@ -215,11 +217,39 @@ def update_gcal_from_components_map(calendar_id, components_map):
     # Get API
     service = get_service()
 
-    gcal_event_ids = [gce['id'] for gce in gcal_components_generator(calendar_id)]
-    ical_event_ids = [get_safe_event_id(vevent_decode(e)) for e in components_map]
+    gcal_events = gcal_components_map(calendar_id)
+    ical_events = components_map
 
-    print(gcal_event_ids)
-    print(ical_event_ids)
+    gcal_event_ids = sorted(list(gcal_events.keys()))
+    ical_event_ids = sorted(list(components_map.keys()))
+
+    add_ids    = set(ical_event_ids) - set(gcal_event_ids)
+    rm_ids     = set(gcal_event_ids) - set(ical_event_ids)
+    update_ids = set(gcal_event_ids) & set(ical_event_ids)
+
+    print("Google Calendar Event IDs:")
+    for e in gcal_event_ids:
+        print("    [+] %s"%(e))
+
+    print("iCalendar Event IDs:")
+    for e in ical_event_ids:
+        print("    [+] %s"%(e))
+
+    print("Google Calendar event IDs that should be added:")
+    print(", ".join(add_ids))
+    print("\n")
+
+    print("Google Calendar event IDs that should be removed:")
+    print(", ".join(rm_ids))
+    print("\n")
+
+    print("Google Calendar event IDs that should be updated:")
+    print(", ".join(update_ids))
+    print("\n")
+
+    print("Comparing events:")
+    for eid in update_ids:
+        sync_events(gcal_events[eid],ics2gcal_event(ical_events[eid]))
 
     #print("Populating Google Calendar with events from components_map...")
     #print("Calendar id: %s"%(calendar_id))
@@ -229,6 +259,21 @@ def update_gcal_from_components_map(calendar_id, components_map):
     #    gce = ics2gcal_event(e)
 
     #    # Check if this event already exists in the calendar
+
+
+
+
+def sync_events(gcal,ical):
+    print("\n\n")
+    print("Compare:")
+    for ik in ical.keys():
+        if ik in gcal.keys():
+            if ical[ik]!=gcal[ik]:
+                print("  Found differing keys for key %s:"%(ik))
+                print("    ical:")
+                pprint(ical[ik])
+                print("    gcal:")
+                pprint(gcal[ik])
 
 
 
@@ -247,26 +292,32 @@ def populate_gcal_from_components_map(calendar_id, components_map):
     print("Populating Google Calendar with events from components_map...")
     print("Calendar id: %s"%(calendar_id))
     for k in components_map.keys():
-        print(" > Processing event %s"%k)
+        print(" Processing event %s"%k)
         e = components_map[k]
         gce = ics2gcal_event(e)
         try:
             created_event = service.events().insert(calendarId=calendar_id, body=gce).execute()
+            print("Created event on calendar %s"%(calendar_id))
+            print("Event ID: %s\n"%(created_event['id']))
         except apiclient.errors.HttpError:
             if event_exists(calendar_id, gce['id']):
                 err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
                 err += "This event already exists!\n"
                 err += "Calendar id: %s\n"%(calendar_id)
                 err += "Event id: %s\n"%(gce['id'])
-                raise Exception(err)
+                #raise Exception(err)
+                print(err)
+                print("Continuing...\n")
             else:
                 err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
                 err += "There may be a problem with the calendar/event id.\n"
                 err += "Calendar id: %s\n"%(calendar_id)
                 err += "Event id: %s\n"%(gce['id'])
-                raise Exception(err)
+                #raise Exception(err)
+                print(err)
+                print("Continuing...\n")
 
-        print("Created event on calendar %s with event id: %s"%(calendar_id, created_event['id']))
+    print("Done populating Google Calendar with events.")
 
 
 
@@ -321,11 +372,11 @@ def ics2gcal_event(vevent):
     gcal_event = {
             "summary" : vevent_decode(vevent['SUMMARY']),
             "start" : {
-                "timeZome" : timezone,
+                "timeZone" : timezone,
                 "dateTime" : startdt.isoformat("T"),
             },
             "end" : {
-                "timeZome" : timezone,
+                "timeZone" : timezone,
                 "dateTime" : enddt.isoformat("T"),
             },
             "id" :          event_id,
