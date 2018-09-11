@@ -78,7 +78,7 @@ def ics_components_map(ics, components_map={}):
     (VEVENT components).
     """
     for e in ics_components_generator(ics):
-        components_map[e['UID']] = e
+        components_map[get_safe_event_id(e['UID'])] = e
     return components_map
 
 
