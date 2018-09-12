@@ -243,7 +243,7 @@ def update_gcal_from_components_map(calendar_id, components_map):
         
         arg1 = gcal_events[eid]
         arg2 = ics2gcal_event(ical_events[eid])
-        sync_events(arg1,arg2)
+        sync_events(arg1,arg2,cal_id)
 
     #print("Populating Google Calendar with events from components_map...")
     #print("Calendar id: %s"%(calendar_id))
@@ -257,7 +257,7 @@ def update_gcal_from_components_map(calendar_id, components_map):
 
 
 
-def sync_events(gcal,ical):
+def sync_events(gcal,ical,cal_id):
     """
     For two given events (one Google Calendar, one ical VEVENT),
     bring the Google Calendar event up to date with the 
@@ -375,7 +375,10 @@ def sync_events(gcal,ical):
     # 2. Looped over every key and found no differences
 
     if update_gcal:
-        # Found two keys that are different
+        # Found at least two keys that are different
+        # 
+        # Update the gcal object, then call the
+        # API with it. (Do we have the calendar id?)
         print("Need to update event:")
         print("    id: %s"%(gcal['id']))
         print("    title: %s"%(gcal['summary']))
@@ -384,6 +387,10 @@ def sync_events(gcal,ical):
             print("        key: %s"%(field))
             print("            gcal: %s"%(gcal[field]))
             print("            ical: %s"%(ical[field]))
+            gcal[field] = ical[field]
+
+        # https://developers.google.com/resources/api-libraries/documentation/calendar/v3/python/latest/calendar_v3.events.html#update
+        service.events().update(calendarId=calendar_id, eventId=gcal['id'], body=gcal).execute()
 
         print("\n")
 
