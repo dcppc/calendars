@@ -248,23 +248,29 @@ def update_gcal_from_components_map(cal_id, components_map):
     import pdb; pdb.set_trace()
 
     print("Adding %d events..."%len(add_ids))
+    add_failures = []
     for eid in add_ids:
         ical_event = ics2gcal_event(ical_events[eid])
         print("-"*40)
         print("Adding event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
-        add_event(ical_event,cal_id)
+        failure = add_event(ical_event,cal_id)
+        if failure not None:
+            add_failures.append(failure)
     print("Done adding %d events."%len(add_ids))
 
     import pdb; pdb.set_trace()
 
     print("Removing %d events..."%len(add_ids))
+    rm_failures = []
     for eid in rm_ids:
         ical_event = ics2gcal_event(ical_events[eid])
         print("-"*40)
         print("Removing event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
-        rm_event(ical_event,cal_id)
+        failure = rm_event(ical_event,cal_id)
+        if failure not None:
+            rm_failures.append(failure)
     print("Done removing %d events."%len(rm_ids))
 
     import pdb; pdb.set_trace()
@@ -305,6 +311,8 @@ def add_event(ical2gcal,cal_id):
             #raise Exception(err)
             print(err)
             print("Continuing...\n")
+            # Return this event as failed
+            return ical2gcal
         else:
             err = "ERROR: Could not create event with event id: %s\n"%(ical2gcal['id'])
             err += "There may be a problem with the calendar/event id.\n"
@@ -314,7 +322,10 @@ def add_event(ical2gcal,cal_id):
             #raise Exception(err)
             print(err)
             print("Continuing...\n")
+            # Return this event as failed
+            return ical2gcal
 
+    return None
 
 
 def rm_event(ical2gcal,cal_id):
@@ -340,6 +351,8 @@ def rm_event(ical2gcal,cal_id):
             #raise Exception(err)
             print(err)
             print("Continuing...\n")
+            # Return this event as failed
+            return ical2gcal
         else:
             err = "ERROR: Could not delete event with event id: %s\n"%(ical2gcal['id'])
             err += "There may be a problem with the calendar/event id.\n"
@@ -349,7 +362,10 @@ def rm_event(ical2gcal,cal_id):
             #raise Exception(err)
             print(err)
             print("Continuing...\n")
+            # Return this event as failed
+            return ical2gcal
 
+    return None
 
 
 
