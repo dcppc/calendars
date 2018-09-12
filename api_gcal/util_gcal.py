@@ -230,20 +230,21 @@ def update_gcal_from_components_map(cal_id, components_map):
     gcal_events = gcal_components_map(cal_id)
     ical_events = components_map
 
-    import pdb; pdb.set_trace()
-
     gcal_event_ids = sorted(list(gcal_events.keys()))
     ical_event_ids = sorted(list(components_map.keys()))
 
     add_ids    = set(ical_event_ids) - set(gcal_event_ids)
     rm_ids     = set(gcal_event_ids) - set(ical_event_ids)
-    update_ids = set(gcal_event_ids) & set(ical_event_ids)
+    sync_ids   = set(gcal_event_ids) & set(ical_event_ids)
 
     print("-"*40)
     print("Summary:")
-    print("  ADD:    %d Google Calendar events to add:"%len(add_ids))
+    print("  ADD:    %d Google Calendar events to add"%len(add_ids))
     print("  REMOVE: %d Google Calendar events to remove"%len(rm_ids))
-    print("  UPDATE: %d Google Calendar events to update"%len(update_ids))
+    print("  SYNC:   %d Google Calendar events to sync"%len(sync_ids))
+
+    # ----------------------------
+    # Adding
 
     import pdb; pdb.set_trace()
 
@@ -255,13 +256,23 @@ def update_gcal_from_components_map(cal_id, components_map):
         print("Adding event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
         failure = add_event(ical_event,cal_id)
-        if failure not None:
+        if failure is None:
+            pass
+        else:
             add_failures.append(failure)
     print("Done adding %d events."%len(add_ids))
+    print("Encountered %d failures:"%len(add_failures))
+    for failure in add_failures:
+        eid = failure['id']
+        summary = failure['summary']
+        print("    Event id (title): %s (%s)"%(eid, summary))
+
+    # ----------------------------
+    # Removing
 
     import pdb; pdb.set_trace()
 
-    print("Removing %d events..."%len(add_ids))
+    print("Removing %d events..."%len(rm_ids))
     rm_failures = []
     for eid in rm_ids:
         ical_event = ics2gcal_event(ical_events[eid])
@@ -269,21 +280,31 @@ def update_gcal_from_components_map(cal_id, components_map):
         print("Removing event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
         failure = rm_event(ical_event,cal_id)
-        if failure not None:
+        if failure is None:
+            pass
+        else:
             rm_failures.append(failure)
     print("Done removing %d events."%len(rm_ids))
+    print("Encountered %d failures:"%len(rm_failures))
+    for failure in rm_failures:
+        eid = failure['id']
+        summary = failure['summary']
+        print("    Event id (title): %s (%s)"%(eid, summary))
+
+    # ----------------------------
+    # Sync
 
     import pdb; pdb.set_trace()
 
-    print("Updating %d events..."%len(update_ids))
-    for eid in update_ids:
+    print("Syncing %d events..."%len(sync_ids))
+    for eid in sync_ids:
         gcal_event = gcal_events[eid]
         ical_event = ics2gcal_event(ical_events[eid])
         print("-"*40)
-        print("Updating event %s"%(eid))
+        print("Syncing event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
         sync_events(gcal_event,ical_event,cal_id)
-    print("Done updating %d events."%len(update_ids))
+    print("Done syncing %d events."%len(sync_ids))
 
 
 
@@ -311,8 +332,8 @@ def add_event(ical2gcal,cal_id):
             #raise Exception(err)
             print(err)
             print("Continuing...\n")
-            # Return this event as failed
-            return ical2gcal
+            # Not a "failure", per se
+            return None
         else:
             err = "ERROR: Could not create event with event id: %s\n"%(ical2gcal['id'])
             err += "There may be a problem with the calendar/event id.\n"
@@ -342,28 +363,16 @@ def rm_event(ical2gcal,cal_id):
         print("Event id: %s"%(ical2gcal['id']))
 
     except apiclient.errors.HttpError:
-        if event_exists(cal_id, ical2gcal['id']):
-            err = "ERROR: Could not delete event with event id: %s\n"%(ical2gcal['id'])
-            err += "This event already exists!\n"
-            err += "Calendar id: %s\n"%(cal_id)
-            err += "Event id: %s\n"%(ical2gcal['id'])
-            err += "Title: %s\n"%(gcal['summary'])
-            #raise Exception(err)
-            print(err)
-            print("Continuing...\n")
-            # Return this event as failed
-            return ical2gcal
-        else:
-            err = "ERROR: Could not delete event with event id: %s\n"%(ical2gcal['id'])
-            err += "There may be a problem with the calendar/event id.\n"
-            err += "Calendar id: %s\n"%(cal_id)
-            err += "Event id: %s\n"%(ical2gcal['id'])
-            err += "Title: %s\n"%(gcal['summary'])
-            #raise Exception(err)
-            print(err)
-            print("Continuing...\n")
-            # Return this event as failed
-            return ical2gcal
+        err = "ERROR: Could not delete event with event id: %s\n"%(ical2gcal['id'])
+        err += "There may be a problem with the calendar/event id.\n"
+        err += "Calendar id: %s\n"%(cal_id)
+        err += "Event id: %s\n"%(ical2gcal['id'])
+        err += "Title: %s\n"%(gcal['summary'])
+        #raise Exception(err)
+        print(err)
+        print("Continuing...\n")
+        # Return this event as failed
+        return ical2gcal
 
     return None
 
@@ -378,6 +387,8 @@ def sync_events(gcal,ical,cal_id):
     Not sure what we are returning.
     """
     print("Comparing ical and Google Calendar for event %s:"%(gcal['description']))
+
+    service = get_service()
 
     # This entire function is run once on each individual event
 
@@ -521,7 +532,8 @@ def sync_events(gcal,ical,cal_id):
 
         print("\n")
 
-
+    else:
+        print("Nothing to be updated.")
 
 
 

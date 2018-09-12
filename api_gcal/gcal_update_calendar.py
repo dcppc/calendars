@@ -34,10 +34,11 @@ FUTURE = '2018-11-01T00:00:00Z'
 
 def populate_calendar(ical_file):
 
-    calendar_id = create_gcal("Test GCal Integration")
+    calendar_id = create_gcal("Another Test GCal Integration")
 
     # get all vevents
     components_map = ics_components_map(get_ical_contents(ical_file))
+    print("Preparing to add %d events to the calendar."%len(components_map.keys()))
 
     # add each event to google calendar
     populate_gcal_from_components_map(calendar_id, components_map)
@@ -45,7 +46,7 @@ def populate_calendar(ical_file):
 
 def update_calendar(ical_file):
 
-    calendar_id = create_gcal("Test GCal Integration")
+    calendar_id = create_gcal("Another Test GCal Integration")
 
     # get all vevents
     components_map = ics_components_map(get_ical_contents(ical_file))
