@@ -3,6 +3,7 @@ from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 
+from dateutil.parser import parse
 from collections import OrderedDict
 from util_ical import *
 
@@ -73,15 +74,21 @@ def event_exists(calendar_id, event_id):
     exist on calendar with id calendar_id?
     """
     service = get_service()
-    events_list = service.events().list(calendarId=calendar_id, timeMax=FUTURE).execute()
+    page_token = None
+    while True:
+        events_list = service.events().list(
+                calendarId=calendar_id, 
+                pageToken = page_token,
+                timeMax=FUTURE
+        ).execute()
 
-    for events_list_entry in events_list['items']:
-        if events_list_entry['id']==event_id:
-            return True
+        for events_list_entry in events_list['items']:
+            if events_list_entry['id']==event_id:
+                return True
 
-    page_token = calendar_list.get('nextPageToken')
-    if not page_token:
-        return False
+        page_token = calendar_list.get('nextPageToken')
+        if not page_token:
+            return False
 
 
 def get_service():
@@ -227,29 +234,16 @@ def update_gcal_from_components_map(calendar_id, components_map):
     rm_ids     = set(gcal_event_ids) - set(ical_event_ids)
     update_ids = set(gcal_event_ids) & set(ical_event_ids)
 
-    print("Google Calendar Event IDs:")
-    for e in gcal_event_ids:
-        print("    [+] %s"%(e))
-
-    print("iCalendar Event IDs:")
-    for e in ical_event_ids:
-        print("    [+] %s"%(e))
-
-    print("Google Calendar event IDs that should be added:")
-    print(", ".join(add_ids))
-    print("\n")
-
-    print("Google Calendar event IDs that should be removed:")
-    print(", ".join(rm_ids))
-    print("\n")
-
-    print("Google Calendar event IDs that should be updated:")
-    print(", ".join(update_ids))
-    print("\n")
+    print("Found %d Google Calendar events to add"%len(add_ids))
+    print("Found %d Google Calendar events to remove"%len(rm_ids))
+    print("Found %d Google Calendar events to update"%len(update_ids))
 
     print("Comparing events:")
     for eid in update_ids:
-        sync_events(gcal_events[eid],ics2gcal_event(ical_events[eid]))
+        
+        arg1 = gcal_events[eid]
+        arg2 = ics2gcal_event(ical_events[eid])
+        sync_events(arg1,arg2)
 
     #print("Populating Google Calendar with events from components_map...")
     #print("Calendar id: %s"%(calendar_id))
@@ -264,16 +258,135 @@ def update_gcal_from_components_map(calendar_id, components_map):
 
 
 def sync_events(gcal,ical):
-    print("\n\n")
-    print("Compare:")
+    """
+    For two given events (one Google Calendar, one ical VEVENT),
+    bring the Google Calendar event up to date with the 
+    details of the ical event.
+
+    Not sure what we are returning.
+    """
+    print("Comparing ical and Google Calendar for event %s:"%(gcal['description']))
+
+    # This entire function is run once on each individual event
+
+    # Boolean: do we need to update the gcal event?
+    # Assume no.
+    update_gcal = False
+
+    what_changed = []
+
+    # Iterate over each key in the given event
     for ik in ical.keys():
+
+        # ical event keys are a subset of google cal event keys,
+        # so only check keys that exist in ical
         if ik in gcal.keys():
+
+            # If the values of these matching keys
+            # do not match, we need to update the
+            # Google Calendar event
             if ical[ik]!=gcal[ik]:
-                print("  Found differing keys for key %s:"%(ik))
-                print("    ical:")
-                pprint(ical[ik])
-                print("    gcal:")
-                pprint(gcal[ik])
+
+                # UNLESS.........
+                # It is a start or end time, in which case,
+                # we need to make sure we are comparing the 
+                # timestamps correctly.
+                if ik=='start' or ik=='end':
+
+                    # Example output:
+                    # 
+                    #(Pdb) ical[ik]
+                    #{'timeZone': 'UTC', 'dateTime': '2018-10-04T17:00:00+00:00'}
+                    #(Pdb) gcal[ik]
+                    #{'dateTime': '2018-10-04T13:00:00-04:00', 'timeZone': 'UTC'}
+
+                    # Get the datetime strings
+                    if 'dateTime' not in ical[ik].keys():
+                        # Yikes...
+                        continue
+
+                    if 'dateTime' not in gcal[ik].keys():
+                        # We shouldn't be here.
+                        continue
+
+                    # If no time zone specified, use utc
+                    if 'timeZone' in ical[ik].keys():
+                        ical_tz = ical[ik]['timeZone']
+                    else:
+                        ical_tz = 'UTC'
+
+                    if 'timeZone' in gcal[ik].keys():
+                        gcal_tz = gcal[ik]['timeZone']
+                    else:
+                        gcal_tz = 'UTC'
+
+                    # Now for the tricky part.
+                    # Parse the datetime stamps
+                    idt = parse(ical[ik]['dateTime'])
+                    gdt = parse(gcal[ik]['dateTime'])
+
+                    # ASSUMPTION:
+                    # We assume that Groups.io .ics calendars
+                    # are ALWAYS given in the UTC timeZone.
+                    # If we update our Google Calendar event
+                    # and use a timestamp in the UTC timezone,
+                    # Google Calendar will automatically add
+                    # the time zone information for this calendar
+                    # to the given event.
+                    # 
+                    # (Calendars are EASTERN TIME by default.)
+                    # 
+                    # Okay, on with the show.
+                    # Convert gcal event datetime to UTC
+                    # so we can compare to ical datetime.
+                    gdt = gdt.astimezone(pytz.timezone('UTC'))
+
+                    if gdt != idt:
+                        what_changed.append(ik)
+                        update_gcal = True
+                        # Keep going so we have a complete
+                        # list of keys that changed with
+                        # this particular event.
+
+                elif ik=='sequence':
+                    # Sequence may be an integer
+                    # or a string... :-/
+                    if str(gcal[ik])!=str(ical[ik]):
+                        what_changed.append(ik)
+                        update_gcal = True
+
+                elif ik=='organizer':
+                    # The organizer automatically gets reset to 
+                    # the owner of the calender, so there's no
+                    # need to worry about it.
+                    pass
+
+                else:
+
+                    # Neither a start nor an end,
+                    # and the keys are unequal.
+                    # No further questions.
+                    what_changed.append(ik)
+                    update_gcal = True
+
+
+    # We got here because we either:
+    # 1. Found two keys that are different
+    # 2. Looped over every key and found no differences
+
+    if update_gcal:
+        # Found two keys that are different
+        print("Need to update event:")
+        print("    id: %s"%(gcal['id']))
+        print("    title: %s"%(gcal['summary']))
+        print("    fields changed: %s"%(", ".join(what_changed)))
+        for field in what_changed:
+            print("        key: %s"%(field))
+            print("            gcal: %s"%(gcal[field]))
+            print("            ical: %s"%(ical[field]))
+
+        print("\n")
+
 
 
 
@@ -292,13 +405,15 @@ def populate_gcal_from_components_map(calendar_id, components_map):
     print("Populating Google Calendar with events from components_map...")
     print("Calendar id: %s"%(calendar_id))
     for k in components_map.keys():
-        print(" Processing event %s"%k)
+        print("-"*40)
+        print("Processing event %s"%k)
         e = components_map[k]
         gce = ics2gcal_event(e)
         try:
             created_event = service.events().insert(calendarId=calendar_id, body=gce).execute()
             print("Created event on calendar %s"%(calendar_id))
-            print("Event ID: %s\n"%(created_event['id']))
+            print("Event ID: %s"%(created_event['id']))
+
         except apiclient.errors.HttpError:
             if event_exists(calendar_id, gce['id']):
                 err = "ERROR: Could not create event with event id: %s\n"%(gce['id'])
