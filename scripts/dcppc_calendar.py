@@ -1,16 +1,51 @@
 import sys
 import argparse
 
+"""
+DCPPC Calendar Creation Script
+
+This is a command line utility for creating and updating
+the DCPPC integrated calendar on Google Calendar.
+
+The script integrates multiple .ics feeds from Groups.io
+subgroups into a single Google Calendar, and keeps them
+synchronized.
+
+The user should use either the create or update flag.
+They should also provide a file containing .ical URLs,
+one URL per line.
+
+Example of creating a new calendar:
+
+    python dcppc_calendar.py --create \
+            --name="DCPPC Calendar" \
+            --ical-list=ical_list.txt
+
+Example of updating the existing calendar:
+
+    python dcppc_calendar.py --update \
+            --name="DCPPC Calendar" \
+            --ical-list=ical_list.txt
+"""
+
 def main():
     args = parse_args()
+
+
+def die(parser):
+    """Print parser help and die"""
+    parser.print_help(sys.stderr)
+    exit(1)
+
 
 def parse_args():
     """
     Parse the user arguments
     """
-
     descr = "This script creates/updates an integrated calendar of DCPPC events. "
     descr += "Pass either the --create or --update flag. "
+    descr += "The --ical-list flag is required and should point to a file "
+    descr += "with one .ics URL per line."
     descr += "The --name flag is optional."
 
     parser = argparse.ArgumentParser(description=descr)
@@ -25,6 +60,10 @@ def parse_args():
             help='(REQUIRED) Update (sync) an existing Google Calendar with integrated calendar events'
     )
     parser.add_argument(
+            '-i', '--ical-list', 
+            help='(REQUIRED) Name of a file containing a list of .ics URLs, one per line'
+    )
+    parser.add_argument(
             '-n', '--name', 
             default = "DCPPC Calendar",
             help='(OPTIONAL) Name of the calendar ("DCPPC Calendar" by default)'
@@ -36,7 +75,32 @@ def parse_args():
     elif args.update:
         print("Updating calendar \"%s\""%args.name)
     else:
-        parser.print_help(sys.stderr)
+        die(parser)
+
+    return args
+
+
+def create_calendar(args):
+    calendar_id = create_gcal(args.name)
+
+    # get all vevents
+    components_map = ics_components_map(get_ical_contents(args.ical_list))
+    print("Preparing to add %d events to the calendar."%len(components_map.keys()))
+
+    # add each event to google calendar
+    populate_gcal_from_components_map(calendar_id, components_map)
+
+
+def update_calendar():
+    calendar_id = create_gcal(args.name)
+
+    # get all vevents
+    components_map = ics_components_map(get_ical_contents(args.ical_list))
+    print("Preparing to add %d events to the calendar."%len(components_map.keys()))
+
+    # add each event to google calendar
+    update_gcal_from_components_map(calendar_id, components_map)
+
 
 if __name__=="__main__":
     main()

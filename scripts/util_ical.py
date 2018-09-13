@@ -17,20 +17,28 @@ Calendar Methods:
     export_ical_file() - export a Calendar() object to an .ics file
 
     new_calendar_from_components_map() - use a map of component IDs to
-    calendar VEVENTS to create a new calendar
+        calendar VEVENTS to create a new calendar
 
     ics_components_map() - given the contents of an .ics file as a string,
-    convert to a map of UIDs to VEVENT component objects
+        convert to a map of UIDs to VEVENT component objects
 
     ics_components_generator() - given the contents of an .ics file as
-    a astring, generate/yield VEVENT component objects
+        a astring, generate/yield VEVENT component objects
 
     get_event_url() - given a VEVENT from Groups.io, extract the subgroup
-    name and event ID and use them to assemble the Groups.io peramlink
+        name and event ID and use them to assemble the Groups.io peramlink
+
+    get_ical_contents() - given an ical file, load the contents as a string
 
     get_calendar_contents() - given a URL for an .ics file, return
-    the contents of the .ics file as a string
+        the contents of the .ics file as a string
 
+    get_safe_event_id() - Groups.io uses email addresses for their Event IDs,
+        but Google calendar is more strict. This strips non-alphanumeric characters
+        from Groups.io event IDs to make them safe for Google Calendar.
+
+    vevent_decode() - Given a VEVENT component, convert it to ical format and decode
+        the resulting binary string to unicode.
 """
 
 
@@ -135,7 +143,6 @@ def get_event_url(vevent):
 
 
 
-
 def get_ical_contents(ics_file):
     """
     Given an .ics file, extract the contents as a string
@@ -198,6 +205,11 @@ def get_calendar_contents(ics_url):
 
 
 def get_safe_event_id(event_id):
+    """
+    Groups.io uses email addresses for their Event IDs,
+    but Google calendar is more strict. This strips non-alphanumeric characters
+    from Groups.io event IDs to make them safe for Google Calendar.
+    """
     safe_event_id = event_id
     safe_event_id = re.sub('[^a-zA-Z0-9]','',safe_event_id)
     return safe_event_id
@@ -205,11 +217,12 @@ def get_safe_event_id(event_id):
 
 
 def vevent_decode(vstr):
+    """
+    Given a VEVENT component, convert it to ical format and decode
+    the resulting binary string to unicode.
+    """
     try:
         return vstr.to_ical().decode('utf-8')
     except AttributeError:
         return vstr.decode('utf-8')
-
-
-
 

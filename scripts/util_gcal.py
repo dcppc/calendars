@@ -21,33 +21,90 @@ Description:
     This file contains utility methods for interfacing
     with the Google Calendar API.
 
+
 Utility Methods:
 
-    get_service() - provides an API object (service) to allow
-    interaction with the Google Calendar API.
-    
-    save_cal_id() - save the calendar id to the calendar id file.
-    
-    load_cal_id() - load the calendar id from the calendar id file.
+    get_named_calendar_id() - return the calendar id for the
+        calendar with the given name
 
-Calendar Methods:
+    does_calendar_exist() - given a calendar id, check if that
+        calendar actually exists
 
-    create_calendar() - create a calendar, take a summary and
-    time zone as arguments, save to calendar id file.
-    
-    get_event_ids() - get a set of event ids from a specified
-    calendar id.
+    does_event_exist() - given a calendar id and an event id, check
+        if the event exists
+
+    get_service() - get a Google Calendar API service object
+
+
+Update Methods:
+
+    update_gcal_from_components_map() - given a map of iCalendar 
+        events, use them to update the events on a Google Calendar.
+
+
+Calendar Update Methods:
+
+    add_event() - given a Google Calendar event (JSON), add the event
+        to a calendar with the given calendar id. Push changes to Google
+        Calendar via API.
+
+    rm_event() - given a Google Calendar event id, remove the event
+        from the calendar with the given calendar id. Push changes
+        to Google Calendar via API.
+
+    sync_events() - (MOST COMPLICATED) given a Google Calendar event (JSON) 
+        and an iCalendar event (JSON), determine which fields are different
+        and update those fields on Google Calendar using the API.
+
+
+Create Methods:
+
+    create_gcal() - attempt to create a new Google Calendar with the
+        given label. If the calendar already exists, return its calendar
+        id. If a new calendar is created, return its calendar id.
+
+    delete_gcal() - (NOT IMPLEMENTED)
+
+    populate_gcal_from_components_map() - iterate through every item in
+        an iCalendar components map and add each ical event to the Google
+        Calendar.
+
+    gcal_components_map() - given a calendar id, add each event's JSON
+        to a components map (key is event id, value is event JSON)
+
+    gcal_components_generator() - yields JSON for events in a calendar
+
+    ics2gcal_event() - (SUPER IMPORTANT) this converts events from 
+
 
 Constants:
 
-    CAL_ID_FILE - the name of the file containing the
-    id of the temporary calendar created. Used to modify
-    events on the same calendar later.
+    FUTURE - max time to use when fetching events on a calendar
 """
 
 
-CAL_ID_FILE = 'calendar_name.txt'
 FUTURE = '2018-11-01T00:00:00Z'
+
+
+
+def get_named_calendar_id(calendar_name):
+    """
+    If a calendar with name calendar_name exists,
+    this returns the calendar_id for that calendar.
+    Otherwise, it returns None.
+    """
+    service = get_service()
+    page_token = None
+    while True:
+        calendar_list = service.calendarList().list(
+            pageToken=page_token
+        ).execute()
+        for calendar_list_entry in calendar_list['items']:
+            if calendar_list_entry['summary']==calendar_name:
+                return calendar_list_entry['id']
+        page_token = calendar_list.get('nextPageToken')
+        if not page_token:
+            return None
 
 
 def does_calendar_exist(calendar_id):
@@ -68,7 +125,7 @@ def does_calendar_exist(calendar_id):
             return False
 
 
-def event_exists(calendar_id, event_id):
+def does_event_exist(calendar_id, event_id):
     """
     Boolean: does the event with id event_id
     exist on calendar with id calendar_id?
@@ -115,95 +172,6 @@ def get_service():
         creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
     return service
-
-
-def save_cal_id(cal_id):
-    """
-    Save the calendar id in the calendar id file
-    """
-    with open(CAL_ID_FILE,'w') as f:
-        f.write(cal_id)
-    print("Stored calendar id in file %s"%(CAL_ID_FILE))
-
-
-def load_cal_id():
-    """
-    Load the calendar id in the calendar id file
-    """
-    if not os.path.exists(CAL_ID_FILE):
-        err = "ERROR: Could not load calendar id from file %s: "%(CAL_ID_FILE)
-        err += "No file"
-        raise Exception(err)
-
-    with open(CAL_ID_FILE,'r') as f:
-        calendar_id = f.read()
-
-    if calendar_id == '':
-        err = "ERROR: Could not load calendar id from file %s: "%(CAL_ID_FILE)
-        err += "Empty file"
-        raise Exception(err)
-
-    print("Loaded calendar id from file %s"%(CAL_ID_FILE))
-    return calendar_id
-
-
-def create_gcal(summary,timeZone="America/New_York"):
-    """
-    Create a calendar with a brief description in summary
-    and specifying the time zone.
-
-    Acceptable time zones:
-    - America/New_York
-    - America/Chicago
-    - America/Denver
-    - America/Los_Angeles
-    """
-    if summary=="":
-        err = "ERROR: Calendar summary was empty"
-        raise Exception(err)
-
-    if os.path.exists(CAL_ID_FILE):
-        # Already created a calendar, so load its id
-        print("Found a calendar ID file at %s"%(CAL_ID_FILE))
-        calendar_id = load_cal_id()
-        return calendar_id
-
-    else:
-        # Create a new calendar
-
-        # Get API
-        service = get_service()
-
-        calendar_id = None
-        try:
-            calendar = {
-                'summary': summary,
-                'timeZone': timeZone,
-            }
-            print("Creating calendar file %s"%(CAL_ID_FILE))
-            created_calendar = service.calendars().insert(body=calendar).execute()
-            calendar_id = created_calendar['id']
-            save_cal_id(calendar_id)
-            print("Done. Created calendar with id: %s"%(calendar_id))
-
-        except client.AccessTokenRefreshError:
-            err = 'ERROR: Could not create test calendar\n'
-            err += 'The credentials have been revoked or expired, please re-run '
-            err += 'the application to re-authorize.'
-            raise Exception(err)
-
-        print("Finished creating a calendar id file at %s"%(CAL_ID_FILE))
-
-    return calendar_id
-
-
-
-def destroy_gcal(calendar_id):
-    # Get an instance of cal calendar_id
-    # and delete the calendar
-    # (don't forget to delete the cal id file too)
-    pass
-
 
 
 def update_gcal_from_components_map(cal_id, components_map):
@@ -317,7 +285,7 @@ def add_event(ical2gcal,cal_id):
         print("Title: %s"%(created_event['summary']))
 
     except apiclient.errors.HttpError:
-        if event_exists(cal_id, ical2gcal['id']):
+        if does_event_exist(cal_id, ical2gcal['id']):
             err = "ERROR: Could not create event with event id: %s\n"%(ical2gcal['id'])
             err += "This event already exists!\n"
             err += "Calendar id: %s\n"%(cal_id)
@@ -505,7 +473,7 @@ def sync_events(gcal,ical,cal_id):
             print("Title: %s"%(gcal['summary']))
 
         except apiclient.errors.HttpError:
-            if event_exists(cal_id, gcal['id']):
+            if does_event_exist(cal_id, gcal['id']):
                 err = "ERROR: Could not create event with event id: %s\n"%(gcal['id'])
                 err += "This event already exists!\n"
                 err += "Calendar id: %s\n"%(cal_id)
@@ -528,6 +496,59 @@ def sync_events(gcal,ical,cal_id):
 
     else:
         print("Nothing to be updated.")
+
+
+
+def create_gcal(summary,timeZone="America/New_York"):
+    """
+    Create a calendar with a brief description in summary
+    and specifying the time zone.
+
+    Acceptable time zones:
+    - America/New_York
+    - America/Chicago
+    - America/Denver
+    - America/Los_Angeles
+    """
+    if summary=="":
+        err = "ERROR: Calendar summary was empty"
+        raise Exception(err)
+
+    calendar_id = get_named_calendar_id(summary)
+
+    if calendar_id is not None:
+        # Already created a calendar, so load its id
+        print("Found an existing \"%s\" calendar with id %s"%(summary,calendar_id))
+        return calendar_id
+    else:
+        # This calendar does not yet exist, so let's create it
+
+        # Get API
+        service = get_service()
+
+        try:
+            calendar = {
+                'summary': summary,
+                'timeZone': timeZone,
+            }
+            created_calendar = service.calendars().insert(body=calendar).execute()
+            calendar_id = created_calendar['id']
+            print("Finished creating a calendar \"%s\" with id %s"%(created_calendar['summary'],created_calendar['id']))
+            return calendar_id
+
+        except client.AccessTokenRefreshError:
+            err = 'ERROR: Could not create test calendar\n'
+            err += 'The credentials have been revoked or expired, please re-run '
+            err += 'the application to re-authorize.'
+            raise Exception(err)
+
+    return calendar_id
+
+
+
+def destroy_gcal(calendar_id):
+    """TODO: fill this one in"""
+    pass
 
 
 
