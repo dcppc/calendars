@@ -39,7 +39,6 @@ class ValidationException(Exception):
 
 def main():
     args = parse_args()
-
     if args.create:
         create_calendar(args)
     else:
@@ -84,7 +83,7 @@ def parse_args():
     )
     args = parser.parse_args()
 
-    validate(args)
+    validate(parser)
 
     if args.create:
         print("Creating calendar \"%s\""%args.name)
@@ -93,21 +92,25 @@ def parse_args():
     else:
         die(parser)
 
-    return args
+    return parser
 
 
-def validate(args):
+def validate(parser):
     """
     Validate the input arguments provided by the user
     """
-    if (args.create and args.update) 
+    args = parser.parse_args()
+    if (args.create and args.update):
         err = "ERROR: both create and update arguments were specified."
-        err += "You must specify one or the other."
-        raise ValidationException(err)
+        err += "You must specify one or the other.\n"
+        print(err)
+        die(parser)
+
     if ((not args.create) and (not args.create)):
         err = "ERROR: Neither create nor update arguments were specified."
-        err += "You must specify one or the other."
-        raise ValidationException(err)
+        err += "You must specify one or the other.\n"
+        print(err)
+        die(parser)
 
     if not os.path.isfile(args.ical_list):
         err = "ERROR: Could not find ical file at %s "%(args.ical_list)
