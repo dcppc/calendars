@@ -62,6 +62,9 @@ if __name__ == '__main__':
     ## Step 2: smoke test with calendar A
     #update_calendar('../samples/integrated_calendar_A.ics')
 
-    # Step 3: update with calendar B
-    update_calendar('../samples/integrated_calendar_B.ics')
+    ## Step 3: update with calendar B
+    #update_calendar('../samples/integrated_calendar_B.ics')
+
+    # Step 4: add/remove with calendar C
+    update_calendar('../samples/integrated_calendar_C.ics')
 
