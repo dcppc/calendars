@@ -1,5 +1,10 @@
-import sys
 import argparse
+import os
+import sys
+
+
+basename = os.path.split(os.path.abspath(__file__))[0]
+
 
 """
 DCPPC Calendar Creation Script
@@ -28,8 +33,17 @@ Example of updating the existing calendar:
             --ical-list=ical_list.txt
 """
 
+class ValidationException(Exception):
+    pass
+
+
 def main():
     args = parse_args()
+
+    if args.create:
+        create_calendar(args)
+    else:
+        update_calendar(args)
 
 
 def die(parser):
@@ -70,6 +84,8 @@ def parse_args():
     )
     args = parser.parse_args()
 
+    validate(args)
+
     if args.create:
         print("Creating calendar \"%s\""%args.name)
     elif args.update:
@@ -80,23 +96,61 @@ def parse_args():
     return args
 
 
+def validate(args):
+    """
+    Validate the input arguments provided by the user
+    """
+    if (args.create and args.update) 
+        err = "ERROR: both create and update arguments were specified."
+        err += "You must specify one or the other."
+        raise ValidationException(err)
+    if ((not args.create) and (not args.create)):
+        err = "ERROR: Neither create nor update arguments were specified."
+        err += "You must specify one or the other."
+        raise ValidationException(err)
+
+    if not os.path.isfile(args.ical_list):
+        err = "ERROR: Could not find ical file at %s "%(args.ical_list)
+        raise ValidationException(err)
+
+
 def create_calendar(args):
+
+    # create the calendar and return the calendar id
     calendar_id = create_gcal(args.name)
 
+    # get all icals
+    icals = []
+    with open(args.ical_list,'r') as f:
+        icals = f.readlines()
+
     # get all vevents
-    components_map = ics_components_map(get_ical_contents(args.ical_list))
+    components_map = {}
+    for ical_url in icals:
+        components_map = ics_components_map(get_calendar_contents(ical_url), component_map)
+
     print("Preparing to add %d events to the calendar."%len(components_map.keys()))
 
     # add each event to google calendar
     populate_gcal_from_components_map(calendar_id, components_map)
 
 
-def update_calendar():
+def update_calendar(args):
+
+    # return the calendar id
     calendar_id = create_gcal(args.name)
 
+    # get all icals
+    icals = []
+    with open(args.ical_list,'r') as f:
+        icals = f.readlines()
+
     # get all vevents
-    components_map = ics_components_map(get_ical_contents(args.ical_list))
-    print("Preparing to add %d events to the calendar."%len(components_map.keys()))
+    components_map = {}
+    for ical_url in icals:
+        components_map = ics_components_map(get_calendar_contents(ical_url), component_map)
+
+    print("Preparing to update %d events on the calendar."%len(components_map.keys()))
 
     # add each event to google calendar
     update_gcal_from_components_map(calendar_id, components_map)
