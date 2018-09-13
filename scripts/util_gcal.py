@@ -221,16 +221,16 @@ def update_gcal_from_components_map(cal_id, components_map):
         try:
             ical_event = ics2gcal_event(ical_events[eid])
         except:
-            print("XXX Failed to convert ics to google calendar event")
+            print("XXX Failed to convert event to JSON")
             traceback.print_exc()
-            pass
+            continue
         print("-"*40)
         print("Adding event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
         failure = add_event(ical_event,cal_id)
         if failure is None:
-            print("X Failed")
-            pass
+            print("XXX Add event returned None")
+            continue
         else:
             add_failures.append(failure)
     print("Done adding %d events."%len(add_ids))
@@ -252,7 +252,7 @@ def update_gcal_from_components_map(cal_id, components_map):
         print("Title: %s"%(gcal_event['summary']))
         failure = rm_event(gcal_event,cal_id)
         if failure is None:
-            pass
+            continue
         else:
             rm_failures.append(failure)
     print("Done removing %d events."%len(rm_ids))
@@ -266,14 +266,22 @@ def update_gcal_from_components_map(cal_id, components_map):
     # Sync
 
     print("Syncing %d events..."%len(sync_ids))
+    n_events_changed = 0
     for eid in sync_ids:
         gcal_event = gcal_events[eid]
-        ical_event = ics2gcal_event(ical_events[eid])
+        try:
+            ical_event = ics2gcal_event(ical_events[eid])
+        except:
+            print("XXX Failed to convert ics to google calendar event")
+            traceback.print_exc()
+            continue
         print("-"*40)
         print("Syncing event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
-        sync_events(gcal_event,ical_event,cal_id)
-    print("Done syncing %d events."%len(sync_ids))
+        was_changed = sync_events(gcal_event,ical_event,cal_id)
+        if was_changed:
+            n_events_changed += 1
+    print("Done syncing %d events, %d updated."%(len(sync_ids),n_events_changed))
 
 
 
@@ -364,6 +372,8 @@ def sync_events(gcal,ical,cal_id):
     # Boolean: do we need to update the gcal event?
     # Assume no.
     update_gcal = False
+
+    was_event_changed = False
 
     what_changed = []
 
@@ -478,6 +488,7 @@ def sync_events(gcal,ical,cal_id):
             print("Calendar id: %s"%(cal_id))
             print("Event id: %s"%(gcal['id']))
             print("Title: %s"%(gcal['summary']))
+            return True
 
         except apiclient.errors.HttpError:
             if does_event_exist(cal_id, gcal['id']):
@@ -489,6 +500,7 @@ def sync_events(gcal,ical,cal_id):
                 #raise Exception(err)
                 print(err)
                 print("Continuing...\n")
+                return False
             else:
                 err = "ERROR: Could not create event with event id: %s\n"%(gcal['id'])
                 err += "There may be a problem with the calendar/event id.\n"
@@ -498,11 +510,13 @@ def sync_events(gcal,ical,cal_id):
                 #raise Exception(err)
                 print(err)
                 print("Continuing...\n")
+                return False
 
         print("\n")
 
     else:
         print("Nothing to be updated.")
+        return False
 
 
 
@@ -583,6 +597,8 @@ def populate_gcal_from_components_map(calendar_id, components_map):
             add_event(gce,calendar_id)
         except:
             print("XXX Failed to convert event to JSON")
+            traceback.print_exc()
+            continue
 
     gcm = gcal_components_map(calendar_id)
     print("Done populating Google Calendar:")

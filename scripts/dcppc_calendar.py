@@ -109,7 +109,7 @@ def validate(parser):
         print(err)
         die(parser)
 
-    if ((not args.create) and (not args.create)):
+    if ((not args.create) and (not args.update)):
         err = "ERROR: Neither create nor update arguments were specified."
         err += "You must specify one or the other.\n"
         print(err)
@@ -158,7 +158,7 @@ def update_calendar(args):
     # get all vevents
     components_map = {}
     for ical_url in icals:
-        components_map = ics_components_map(get_calendar_contents(ical_url), component_map)
+        components_map = ics_components_map(get_calendar_contents(ical_url), components_map)
 
     print("Preparing to update %d events on the calendar."%len(components_map.keys()))
 
