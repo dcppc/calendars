@@ -246,8 +246,6 @@ def update_gcal_from_components_map(cal_id, components_map):
     # ----------------------------
     # Adding
 
-    import pdb; pdb.set_trace()
-
     print("Adding %d events..."%len(add_ids))
     add_failures = []
     for eid in add_ids:
@@ -270,16 +268,14 @@ def update_gcal_from_components_map(cal_id, components_map):
     # ----------------------------
     # Removing
 
-    import pdb; pdb.set_trace()
-
     print("Removing %d events..."%len(rm_ids))
     rm_failures = []
     for eid in rm_ids:
-        ical_event = ics2gcal_event(ical_events[eid])
+        gcal_event = gcal_events[eid]
         print("-"*40)
         print("Removing event %s"%(eid))
-        print("Title: %s"%(ical_event['summary']))
-        failure = rm_event(ical_event,cal_id)
+        print("Title: %s"%(gcal_event['summary']))
+        failure = rm_event(gcal_event,cal_id)
         if failure is None:
             pass
         else:
@@ -293,8 +289,6 @@ def update_gcal_from_components_map(cal_id, components_map):
 
     # ----------------------------
     # Sync
-
-    import pdb; pdb.set_trace()
 
     print("Syncing %d events..."%len(sync_ids))
     for eid in sync_ids:
