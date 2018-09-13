@@ -1,6 +1,8 @@
 import argparse
 import os
 import sys
+from util_ical import *
+from util_gcal import *
 
 
 basename = os.path.split(os.path.abspath(__file__))[0]
@@ -74,6 +76,7 @@ def parse_args():
     )
     parser.add_argument(
             '-i', '--ical-list', 
+            required = True,
             help='(REQUIRED) Name of a file containing a list of .ics URLs, one per line'
     )
     parser.add_argument(
@@ -92,7 +95,7 @@ def parse_args():
     else:
         die(parser)
 
-    return parser
+    return args
 
 
 def validate(parser):
@@ -112,10 +115,13 @@ def validate(parser):
         print(err)
         die(parser)
 
-    if not os.path.isfile(args.ical_list):
-        err = "ERROR: Could not find ical file at %s "%(args.ical_list)
+    try:
+        if not os.path.isfile(args.ical_list):
+            err = "ERROR: Could not find ical list file at %s "%(args.ical_list)
+            raise ValidationException(err)
+    except TypeError:
+        err = "ERROR: Malformed argument provided for --ical-list: %s"%(args.ical_list)
         raise ValidationException(err)
-
 
 def create_calendar(args):
 
@@ -130,7 +136,8 @@ def create_calendar(args):
     # get all vevents
     components_map = {}
     for ical_url in icals:
-        components_map = ics_components_map(get_calendar_contents(ical_url), component_map)
+        contents = get_calendar_contents(ical_url)
+        components_map = ics_components_map(contents, components_map)
 
     print("Preparing to add %d events to the calendar."%len(components_map.keys()))
 

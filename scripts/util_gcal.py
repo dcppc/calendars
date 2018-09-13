@@ -7,6 +7,7 @@ from dateutil.parser import parse
 from collections import OrderedDict
 from util_ical import *
 
+import traceback
 from pprint import pprint
 import sys, os, re
 import datetime
@@ -217,12 +218,18 @@ def update_gcal_from_components_map(cal_id, components_map):
     print("Adding %d events..."%len(add_ids))
     add_failures = []
     for eid in add_ids:
-        ical_event = ics2gcal_event(ical_events[eid])
+        try:
+            ical_event = ics2gcal_event(ical_events[eid])
+        except:
+            print("XXX Failed to convert ics to google calendar event")
+            traceback.print_exc()
+            pass
         print("-"*40)
         print("Adding event %s"%(eid))
         print("Title: %s"%(ical_event['summary']))
         failure = add_event(ical_event,cal_id)
         if failure is None:
+            print("X Failed")
             pass
         else:
             add_failures.append(failure)
@@ -571,8 +578,11 @@ def populate_gcal_from_components_map(calendar_id, components_map):
         print("-"*40)
         print("Processing event %s"%k)
         e = components_map[k]
-        gce = ics2gcal_event(e)
-        add_event(gce,calendar_id)
+        try:
+            gce = ics2gcal_event(e)
+            add_event(gce,calendar_id)
+        except:
+            print("XXX Failed to convert event to JSON")
 
     gcm = gcal_components_map(calendar_id)
     print("Done populating Google Calendar:")

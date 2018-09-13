@@ -174,28 +174,13 @@ def get_calendar_contents(ics_url):
         content = r.content
         try:
             result = content.decode('utf-8')
-            #result = re.sub('\r\n','\n',result)
             print(" [+] Success!")
-
             return result
 
         except UnicodeDecodeError:
-            # We need to figure out what to do here.
-            # utf-16 results in chinese characters!!
-            #####result = content.decode('utf-16')
-            #####result = re.sub('\r\n','\n',result)
-            #####calendar_contents.append(result)
-            #####print(" [+] Success!")
-            #
-            ## This is useful for printing what characters are weird
-            #import unicodedata
-            #for c in r.text:
-            #    if ord(c) >= 127:
-            #        print('{} U+{:04x} {}'.format(c.encode('utf8'), ord(c), unicodedata.name(c)))
-            #print(" [-] FAILED but printed useful information")
-            #
-            print(" [-] FAIL")
-            return None
+            result = content.decode('ISO-8859-1')
+            print(" [+] Success!")
+            return result
     else:
         print(" [-] FAILED with status code %s"%(r.status_code))
         print(r.content.decode('utf-8'))
