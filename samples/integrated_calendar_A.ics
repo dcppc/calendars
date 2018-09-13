@@ -1,0 +1,1576 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID://DCPPC//Google Calendar 70.9054//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20181004T170000Z
+DTEND:20181004T173000Z
+DTSTAMP:20180906T012536Z
+UID:calendar.9286.338719@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20180920T170000Z
+DTEND:20180920T173000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.330526@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20180906T170000Z
+DTEND:20180906T173000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.311500@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20180823T170000Z
+DTEND:20180823T173000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.311499@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20180809T170000Z
+DTEND:20180809T173000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.306595@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20180726T170000Z
+DTEND:20180726T173000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.306594@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:OD FullStack Biweekly Call
+DTSTART:20180712T170000Z
+DTEND:20180712T173000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.306593@groups.io
+SEQUENCE:0
+DESCRIPTION:Welcome to the Full Stack Working Group (FSWG) biweekly meetin
+ gs.
+LOCATION:Zoom and DaVinci Conference Room (RENCI) 
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Webinar: NIH's Virtual Directory Service and the Sequence Data Del
+ ivery Pilot (NIH/CIT)
+DTSTART:20180517T190000Z
+DTEND:20180517T203000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9286.278727@groups.io
+SEQUENCE:0
+DESCRIPTION:NIH/CIT team will deliver the presentation on NIH’s Virtual
+  Directory Service and on the Sequence Data Delivery Pilot. These presenta
+ tions are intended  to provide a broader context on NIH activities. Pleas
+ e join! 
+LOCATION:ZOOM  (and DaVinci Room for RENCI people)
+ORGANIZER;CN="FSWG@dcppc.groups.io Group":mailto:FSWG@dcppc.groups.io
+TIME: May 17\, 2018 3:00 PM Eastern Time (US and Canada)
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180822T160000Z
+DTEND:20180822T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.311375@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20181024T160000Z
+DTEND:20181024T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.316884@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20181010T150000Z
+DTEND:20181010T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.316883@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180926T160000Z
+DTEND:20180926T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.316882@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20180912T150000Z
+DTEND:20180912T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.316881@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20180808T150000Z
+DTEND:20180808T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.275138@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20180711T150000Z
+DTEND:20180711T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.275137@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180725T160000Z
+DTEND:20180725T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.275136@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20180613T150000Z
+DTEND:20180613T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.274912@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180627T160000Z
+DTEND:20180627T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.274911@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180523T160000Z
+DTEND:20180523T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.256642@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180425T160000Z
+DTEND:20180425T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.256641@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Fourth Wednesday at 12PM ET
+DTSTART:20180328T160000Z
+DTEND:20180328T170000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.256640@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *fourth Wednes
+ day of every month at 12:00 PM Eastern Time*. Please note the GoToMeeting
+  link below.
+LOCATION:https://global.gotomeeting.com/join/716331461﻿
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Bio-IT World Conference and Expo '18 - FAIR Data for Genomic Appli
+ cations (Track #3)
+DTSTART:20180515T110000Z
+DTEND:20180517T200000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.256639@groups.io
+SEQUENCE:0
+DESCRIPTION:http://www.bio-itworldexpo.com/
+LOCATION:Boston\, MA (Seaport World Trade Center)
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20180509T150000Z
+DTEND:20180509T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.256630@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC1 Working Group Call Every Second Wednesday at 11AM ET
+DTSTART:20180411T150000Z
+DTEND:20180411T160000Z
+DTSTAMP:20180906T012537Z
+UID:calendar.9280.256629@groups.io
+SEQUENCE:0
+DESCRIPTION:KC1 working group calls are scheduled for the second Wednesday
+  at 11:00 AM ET and fourth Wednesday at 12:00 PM ET of every month. This 
+ invite is for the KC1 working group call scheduled for the *second Wednes
+ day of every month at 11:00 AM Eastern Time*. Please note the GoToMeeting 
+ link below.
+LOCATION:https://global.gotomeeting.com/join/716331461
+ORGANIZER;CN="kc1@dcppc.groups.io Group":mailto:kc1@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181207T170000Z
+DTEND:20181207T180000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311712@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181130T170000Z
+DTEND:20181130T180000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311711@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181123T170000Z
+DTEND:20181123T180000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311710@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181116T170000Z
+DTEND:20181116T180000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311709@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181109T170000Z
+DTEND:20181109T180000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311708@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181102T160000Z
+DTEND:20181102T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311707@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181026T160000Z
+DTEND:20181026T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311706@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181019T160000Z
+DTEND:20181019T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311705@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181012T160000Z
+DTEND:20181012T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311704@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20181005T160000Z
+DTEND:20181005T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311703@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180928T160000Z
+DTEND:20180928T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311702@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180921T160000Z
+DTEND:20180921T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311701@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180914T160000Z
+DTEND:20180914T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311700@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180831T160000Z
+DTEND:20180831T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311503@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180824T160000Z
+DTEND:20180824T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.311502@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180803T160000Z
+DTEND:20180803T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.301747@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180727T160000Z
+DTEND:20180727T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.301746@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180713T160000Z
+DTEND:20180713T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.301744@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180622T160000Z
+DTEND:20180622T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.298006@groups.io
+SEQUENCE:0
+DESCRIPTION:Agenda:
+HTTPS://docs.google.com/document/d/16yl9yB5ngaJi8wNT8u_JZPO3N_HtPVdIfhqg2V
+ 9rLXA/edit#heading=h.wce56aknkziq
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180302T050000Z
+DTEND:20180302T050000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.285509@groups.io
+SEQUENCE:0
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180223T050000Z
+DTEND:20180223T050000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.285508@groups.io
+SEQUENCE:0
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20180209T050000Z
+DTEND:20180209T050000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.285506@groups.io
+SEQUENCE:0
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC2: Weekly Meeting
+DTSTART:20171221T160000Z
+DTEND:20171221T170000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9513.285501@groups.io
+SEQUENCE:0
+ORGANIZER;CN="kc2@dcppc.groups.io Group":mailto:kc2@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC3 montly webex
+DTSTART:20181005T180000Z
+DTEND:20181005T190000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9210.314398@groups.io
+SEQUENCE:0
+LOCATION:https://hms.webex.com/meet/PAvillach      AUDIO: You need to clic
+ k on &#39\;Quick Start&#39\; then &#39\;Connect to Audio&#39\;  then choos
+ e: 	- &#39\;Call using Computer&#39\;  OR 	- &#39\;I will call in&#39\;  O
+ R 	- &#39\;Call me&#39\;
+ORGANIZER;CN="kc3@dcppc.groups.io Group":mailto:kc3@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC3 montly webex
+DTSTART:20180907T180000Z
+DTEND:20180907T190000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9210.311494@groups.io
+SEQUENCE:0
+LOCATION:https://hms.webex.com/meet/PAvillach      AUDIO: You need to clic
+ k on &#39\;Quick Start&#39\; then &#39\;Connect to Audio&#39\;  then choos
+ e: 	- &#39\;Call using Computer&#39\;  OR 	- &#39\;I will call in&#39\;  O
+ R 	- &#39\;Call me&#39\;
+ORGANIZER;CN="kc3@dcppc.groups.io Group":mailto:kc3@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC3 montly webex
+DTSTART:20180706T180000Z
+DTEND:20180706T190000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9210.285085@groups.io
+SEQUENCE:0
+LOCATION:https://hms.webex.com/meet/PAvillach      AUDIO: You need to clic
+ k on &#39\;Quick Start&#39\; then &#39\;Connect to Audio&#39\;  then choos
+ e: 	- &#39\;Call using Computer&#39\;  OR 	- &#39\;I will call in&#39\;  O
+ R 	- &#39\;Call me&#39\;
+ORGANIZER;CN="kc3@dcppc.groups.io Group":mailto:kc3@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC3 montly webex
+DTSTART:20180601T180000Z
+DTEND:20180601T190000Z
+DTSTAMP:20180906T012538Z
+UID:calendar.9210.285084@groups.io
+SEQUENCE:0
+LOCATION:https://hms.webex.com/meet/PAvillach      AUDIO: You need to clic
+ k on &#39\;Quick Start&#39\; then &#39\;Connect to Audio&#39\;  then choos
+ e: 	- &#39\;Call using Computer&#39\;  OR 	- &#39\;I will call in&#39\;  O
+ R 	- &#39\;Call me&#39\;
+ORGANIZER;CN="kc3@dcppc.groups.io Group":mailto:kc3@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20181106T160000Z
+DTEND:20181106T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316654@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20181030T150000Z
+DTEND:20181030T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316653@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20181023T150000Z
+DTEND:20181023T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316652@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20181016T150000Z
+DTEND:20181016T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316651@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20181009T150000Z
+DTEND:20181009T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316650@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20181002T150000Z
+DTEND:20181002T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316649@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180925T150000Z
+DTEND:20180925T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316648@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180918T150000Z
+DTEND:20180918T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316647@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180911T150000Z
+DTEND:20180911T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.316646@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180904T150000Z
+DTEND:20180904T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309590@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180828T150000Z
+DTEND:20180828T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309589@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180821T150000Z
+DTEND:20180821T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309588@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180814T150000Z
+DTEND:20180814T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309587@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180807T150000Z
+DTEND:20180807T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309586@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180731T150000Z
+DTEND:20180731T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309585@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180724T150000Z
+DTEND:20180724T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.309584@groups.io
+SEQUENCE:0
+DESCRIPTION:To join the meeting on a computer or mobile phone: https://blu
+ ejeans.com/916588108?src=calendarLink ( https://bluejeans.com/916588108?sr
+ c=calendarLink )
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC6 full group meeting
+DTSTART:20180320T150000Z
+DTEND:20180320T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.250924@groups.io
+SEQUENCE:0
+DESCRIPTION:This meeting is for all members of KC6 to meet - agenda forthc
+ oming. 
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC6 ELSI Meeting
+DTSTART:20180306T160000Z
+DTEND:20180306T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9283.248553@groups.io
+SEQUENCE:0
+DESCRIPTION:Join from PC\, Mac\, Linux\, iOS or Android: https://uchealth
+ .zoom.us/j/431902987 ( https://hsmail.ucsd.edu/owa/redir.aspx?C=WaDFGuAQdI
+ 7xuTOhPRAw6qSAczKpZQyyocvguqyCERDUgtgUzILVCA..&URL=https%3a%2f%2fuchealth.
+ zoom.us%2fj%2f431902987 )
+LOCATION:Zoom
+ORGANIZER;CN="kc6ethics@dcppc.groups.io Group":mailto:kc6ethics@dcppc.grou
+ ps.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180918T150000Z
+DTEND:20180918T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.329486@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180911T150000Z
+DTEND:20180911T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.327237@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180904T150000Z
+DTEND:20180904T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.311498@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180828T150000Z
+DTEND:20180828T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.311497@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180821T150000Z
+DTEND:20180821T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.311496@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180814T150000Z
+DTEND:20180814T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.311495@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180807T150000Z
+DTEND:20180807T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275143@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180731T150000Z
+DTEND:20180731T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275142@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180724T150000Z
+DTEND:20180724T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275141@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180717T150000Z
+DTEND:20180717T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275140@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180710T150000Z
+DTEND:20180710T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275139@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180703T150000Z
+DTEND:20180703T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275133@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180626T150000Z
+DTEND:20180626T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275132@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180619T150000Z
+DTEND:20180619T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275131@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180612T150000Z
+DTEND:20180612T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.275130@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180605T150000Z
+DTEND:20180605T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.271467@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180529T150000Z
+DTEND:20180529T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.271466@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180522T150000Z
+DTEND:20180522T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.271465@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180515T150000Z
+DTEND:20180515T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.271464@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180508T150000Z
+DTEND:20180508T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.271463@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:NIH Data Commons KC6 Meeting
+DTSTART:20180501T150000Z
+DTEND:20180501T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.271462@groups.io
+SEQUENCE:0
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC6 Meeting
+DTSTART:20180424T150000Z
+DTEND:20180424T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.270137@groups.io
+SEQUENCE:0
+DESCRIPTION:KC6 meeting to discuss next steps on both technology and on go
+ vernance.
+LOCATION:https://bluejeans.com/916588108
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC6 full group meeting
+DTSTART:20180320T150000Z
+DTEND:20180320T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.250925@groups.io
+SEQUENCE:0
+DESCRIPTION:This meeting is for all members of KC6 to meet - agenda forthc
+ oming. 
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC6 Tech Meeting
+DTSTART:20180313T150000Z
+DTEND:20180313T160000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.9284.248555@groups.io
+SEQUENCE:0
+DESCRIPTION:Join from PC\, Mac\, Linux\, iOS or Android: https://uchealth
+ .zoom.us/j/431902987 ( https://hsmail.ucsd.edu/owa/redir.aspx?C=b6phmFxEVP
+ j3m2Kt05IAQ7vWJ05gP6ZUnZRlLJHNX7AjYVNMzYLVCA..&URL=https%3a%2f%2fuchealth.
+ zoom.us%2fj%2f431902987 )
+LOCATION:Zoom
+ORGANIZER;CN="kc6tech@dcppc.groups.io Group":mailto:kc6tech@dcppc.groups.i
+ o
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180830T160000Z
+DTEND:20180830T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292149@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180816T160000Z
+DTEND:20180816T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292148@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180802T160000Z
+DTEND:20180802T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.275135@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180719T160000Z
+DTEND:20180719T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.275134@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180705T160000Z
+DTEND:20180705T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.275129@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180621T160000Z
+DTEND:20180621T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.275128@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180607T160000Z
+DTEND:20180607T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.267582@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20190131T170000Z
+DTEND:20190131T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292160@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20190117T170000Z
+DTEND:20190117T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292159@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20190103T170000Z
+DTEND:20190103T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292158@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20181220T170000Z
+DTEND:20181220T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292157@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20181206T170000Z
+DTEND:20181206T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292156@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20181122T170000Z
+DTEND:20181122T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292155@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20181108T170000Z
+DTEND:20181108T180000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292154@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20181025T160000Z
+DTEND:20181025T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292153@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20181011T160000Z
+DTEND:20181011T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292152@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180927T160000Z
+DTEND:20180927T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292151@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180913T160000Z
+DTEND:20180913T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.292150@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180524T160000Z
+DTEND:20180524T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.267581@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:This is a test event for KC7 calendar integration to slack channel
+ .
+DTSTART:20180518T130000Z
+DTEND:20180518T140000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.281884@groups.io
+SEQUENCE:0
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180510T160000Z
+DTEND:20180510T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.266031@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180426T160000Z
+DTEND:20180426T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.266030@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180412T160000Z
+DTEND:20180412T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.265239@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180329T160000Z
+DTEND:20180329T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.249894@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC7 Working Group
+DTSTART:20180315T160000Z
+DTEND:20180315T170000Z
+DTSTAMP:20180906T012539Z
+UID:calendar.8949.249893@groups.io
+SEQUENCE:0
+DESCRIPTION:*KC7 Working Group Bi-Weekly Meeting*
+LOCATION:WebEx
+ORGANIZER;CN="kc7@dcppc.groups.io Group":mailto:kc7@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC Demo Review with NIH
+DTSTART:20180718T170000Z
+DTEND:20180718T200000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.8685.305488@groups.io
+SEQUENCE:0
+DESCRIPTION:Join from PC\, Mac\, Linux\, iOS or Android: https://zoom.us/j
+ /863683568
+LOCATION:Join from PC\, Mac\, Linux\, iOS or Android: https://zoom.us/j/86
+ 3683568
+ORGANIZER;CN="leads@dcppc.groups.io Group":mailto:leads@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:This is a test!
+DTSTART:20180211T150000Z
+DTEND:20180211T160000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.8685.237622@groups.io
+SEQUENCE:0
+DESCRIPTION:this is just a test...
+ORGANIZER;CN="leads@dcppc.groups.io Group":mailto:leads@dcppc.groups.io
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC Monthly Deliverables Kickoff Meeting
+DTSTART:20181003T180000Z
+DTEND:20181003T190000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.312071@groups.io
+SEQUENCE:0
+DESCRIPTION:Hi there\, 
+LOCATION:Zoom
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: Jun 6\, 2018 2:00 PM Eastern Time (US and Canada)
+TOPIC: DCPPC Monthly Deliverables Kickoff Meeting
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC Monthly PM Meeting
+DTSTART:20180720T150000Z
+DTEND:20180720T160000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.309676@groups.io
+SEQUENCE:0
+DESCRIPTION:Hi there\, 
+LOCATION:Zoom
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: Jul 20\, 2018 11:00 AM Eastern Time (US and Canada)
+TOPIC: DCPPC Project Managers Meeting
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC August Deliverables Kickoff Meeting
+DTSTART:20180705T200000Z
+DTEND:20180705T210000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.301774@groups.io
+SEQUENCE:0
+DESCRIPTION:Hi there\, 
+HTTPS://docs.google.com/document/d/1Z3BtGSzvsrXTudRLCNgaKACtPThwSggkw0mEZO
+ lr35w/edit
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: Jul 5\, 2018 4:00 PM Eastern Time (US and Canada)
+TOPIC: August DCPPC Deliverables Kickoff Meeting
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC Monthly Deliverables Kickoff Meeting
+DTSTART:20180905T180000Z
+DTEND:20180905T190000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.291631@groups.io
+SEQUENCE:0
+DESCRIPTION:Hi there\, 
+LOCATION:Zoom
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: Jun 6\, 2018 2:00 PM Eastern Time (US and Canada)
+TOPIC: DCPPC Monthly Deliverables Kickoff Meeting
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC Monthly Deliverables Kickoff Meeting
+DTSTART:20180801T180000Z
+DTEND:20180801T190000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.291630@groups.io
+SEQUENCE:0
+DESCRIPTION:Hi there\, 
+LOCATION:Zoom
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: Jun 6\, 2018 2:00 PM Eastern Time (US and Canada)
+TOPIC: DCPPC Monthly Deliverables Kickoff Meeting
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:DCPPC Monthly Deliverables Kickoff Meeting
+DTSTART:20180606T180000Z
+DTEND:20180606T190000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.291628@groups.io
+SEQUENCE:0
+DESCRIPTION:Hi there\, 
+LOCATION:Zoom
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: Jun 6\, 2018 2:00 PM Eastern Time (US and Canada)
+TOPIC: DCPPC Monthly Deliverables Kickoff Meeting
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:project managers teleconference
+DTSTART:20180525T180000Z
+DTEND:20180525T190000Z
+DTSTAMP:20180906T012541Z
+UID:calendar.18674.285119@groups.io
+SEQUENCE:0
+DESCRIPTION:Anup Mahurkar is inviting you to a scheduled Zoom meeting. 
+ORGANIZER;CN="project-managers@dcppc.groups.io Group":mailto:project-manag
+ ers@dcppc.groups.io
+TIME: May 25\, 2018 2:00 PM Eastern Time (US and Canada)
+TOPIC: DCPPC Project Managers Meeting
+END:VEVENT
+END:VCALENDAR
