@@ -1,4 +1,4 @@
-# Data Commons - Calendars
+# NIH Data Commons Pilot Phase: The Calendars Page
 
 This repository contains scripts for combining Groups.io 
 calendars into a single integrated Data Commons calendar. 
