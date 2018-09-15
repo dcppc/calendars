@@ -1,3 +1,4 @@
+import logging
 import apiclient
 from apiclient.discovery import build
 from httplib2 import Http
@@ -12,6 +13,7 @@ from pprint import pprint
 import sys, os, re
 import datetime
 import pytz
+
 
 """
 Google Calendar API Utilities
@@ -156,13 +158,14 @@ def get_service():
     https://developers.google.com/resources/api-libraries/documentation/calendar/v3/python/latest/
     """
     if not os.path.exists('credentials.json'):
-        print("Could not find OAuth credentials in credentials.json.")
+        logging.error("Could not find OAuth credentials in credentials.json.")
         if not os.path.exists('client_secrets.json'):
-            print("Could not find API credentials in client_secrets.json")
+            logging.error("Could not find API credentials in client_secrets.json")
 
             err = "Error: no API credentials for Google Calendar!\n"
             err += "Download client_secrets.json or credentials.json from the "
             err += "Google Cloud console."
+            logging.error(err)
             raise Exception(err)
 
     SCOPES = 'https://www.googleapis.com/auth/calendar'
@@ -175,7 +178,7 @@ def get_service():
     return service
 
 
-def update_gcal_from_components_map(cal_id, components_map):
+def update_gcal_from_components_map(cal_id, components_map, force_sync=False):
     """
     Iterate through every event in components map
     and check if this event exists on the Google Calendar.
@@ -188,13 +191,14 @@ def update_gcal_from_components_map(cal_id, components_map):
     """
     if cal_id is None:
         err = "ERROR: You passed a null cal_id to populate_gcal_from_components_map()"
+        logging.error(err)
         raise Exception(err)
 
     # Get API
     service = get_service()
 
-    print("Updating Google Calendar with events from components_map...")
-    print("Calendar id: %s"%(cal_id))
+    logging.info("Updating Google Calendar with events from components_map...")
+    logging.info("Calendar id: %s"%(cal_id))
 
     gcal_events = gcal_components_map(cal_id)
     ical_events = components_map
@@ -206,82 +210,80 @@ def update_gcal_from_components_map(cal_id, components_map):
     rm_ids     = set(gcal_event_ids) - set(ical_event_ids)
     sync_ids   = set(gcal_event_ids) & set(ical_event_ids)
 
-    print("-"*40)
-    print("Summary:")
-    print("  ADD:    %d Google Calendar events to add"%len(add_ids))
-    print("  REMOVE: %d Google Calendar events to remove"%len(rm_ids))
-    print("  SYNC:   %d Google Calendar events to sync"%len(sync_ids))
+    logging.info("-"*40)
+    logging.info("Summary:")
+    logging.info("  ADD:    %d Google Calendar events to add"%len(add_ids))
+    logging.info("  REMOVE: %d Google Calendar events to remove"%len(rm_ids))
+    logging.info("  SYNC:   %d Google Calendar events to sync"%len(sync_ids))
 
     # ----------------------------
     # Adding
 
-    print("Adding %d events..."%len(add_ids))
+    logging.info("Adding %d events..."%len(add_ids))
     add_failures = []
     for eid in add_ids:
         try:
             ical_event = ics2gcal_event(ical_events[eid])
         except:
-            print("XXX Failed to convert event to JSON")
-            traceback.print_exc()
+            logging.exception("XXX Failed to convert event to JSON")
             continue
-        print("-"*40)
-        print("Adding event %s"%(eid))
-        print("Title: %s"%(ical_event['summary']))
+        logging.info("-"*40)
+        logging.info("Adding event %s"%(eid))
+        logging.info("Title: %s"%(ical_event['summary']))
         failure = add_event(ical_event,cal_id)
         if failure is None:
-            print("XXX Add event returned None")
+            logging.info("XXX Add event returned None")
             continue
         else:
             add_failures.append(failure)
-    print("Done adding %d events."%len(add_ids))
-    print("Encountered %d failures:"%len(add_failures))
+    logging.info("Done adding %d events."%len(add_ids))
+    logging.info("Encountered %d failures:"%len(add_failures))
     for failure in add_failures:
         eid = failure['id']
         summary = failure['summary']
-        print("    Event id (title): %s (%s)"%(eid, summary))
+        logging.info("    Event id (title): %s (%s)"%(eid, summary))
 
     # ----------------------------
     # Removing
 
-    print("Removing %d events..."%len(rm_ids))
+    logging.info("Removing %d events..."%len(rm_ids))
     rm_failures = []
     for eid in rm_ids:
         gcal_event = gcal_events[eid]
-        print("-"*40)
-        print("Removing event %s"%(eid))
-        print("Title: %s"%(gcal_event['summary']))
+        logging.info("-"*40)
+        logging.info("Removing event %s"%(eid))
+        logging.info("Title: %s"%(gcal_event['summary']))
         failure = rm_event(gcal_event,cal_id)
         if failure is None:
             continue
         else:
             rm_failures.append(failure)
-    print("Done removing %d events."%len(rm_ids))
-    print("Encountered %d failures:"%len(rm_failures))
+    logging.info("Done removing %d events."%len(rm_ids))
+    logging.info("Encountered %d failures:"%len(rm_failures))
     for failure in rm_failures:
         eid = failure['id']
         summary = failure['summary']
-        print("    Event id (title): %s (%s)"%(eid, summary))
+        logging.info("    Event id (title): %s (%s)"%(eid, summary))
 
     # ----------------------------
     # Sync
 
-    print("Syncing %d events..."%len(sync_ids))
+    logging.info("Syncing %d events..."%len(sync_ids))
     n_events_changed = 0
     for eid in sync_ids:
         gcal_event = gcal_events[eid]
         try:
             ical_event = ics2gcal_event(ical_events[eid])
         except:
-            print("XXX Failed to convert ics to google calendar event")
-            traceback.print_exc()
+            logging.exception("XXX Failed to convert ics to google calendar event")
             continue
-        print("-"*40)
-        print("Syncing event %s"%(eid))
-        print("Title: %s"%(ical_event['summary']))
-        was_changed = sync_events(gcal_event,ical_event,cal_id)
+        logging.info("-"*40)
+        logging.info("Syncing event %s"%(eid))
+        logging.info("Title: %s"%(ical_event['summary']))
+        was_changed = sync_events(gcal_event,ical_event,cal_id,force_sync)
         if was_changed:
             n_events_changed += 1
-    print("Done syncing %d events, %d updated."%(len(sync_ids),n_events_changed))
+    logging.info("Done syncing %d events, %d updated."%(len(sync_ids),n_events_changed))
 
 
 
@@ -294,10 +296,10 @@ def add_event(ical2gcal,cal_id):
     service = get_service()
     try:
         created_event = service.events().insert(calendarId=cal_id, body=ical2gcal).execute()
-        print("Successfully created event!")
-        print("Calendar id: %s"%(cal_id))
-        print("Event id: %s"%(created_event['id']))
-        print("Title: %s"%(created_event['summary']))
+        logging.info("Successfully created event!")
+        logging.info("Calendar id: %s"%(cal_id))
+        logging.info("Event id: %s"%(created_event['id']))
+        logging.info("Title: %s"%(created_event['summary']))
 
     except apiclient.errors.HttpError:
         if does_event_exist(cal_id, ical2gcal['id']):
@@ -307,8 +309,8 @@ def add_event(ical2gcal,cal_id):
             err += "Event id: %s\n"%(ical2gcal['id'])
             err += "Title: %s\n"%(ical2gcal['summary'])
             #raise Exception(err)
-            print(err)
-            print("Continuing...\n")
+            logging.error(err)
+            logging.error("Continuing...\n")
             # Not a "failure", per se
             return None
         else:
@@ -318,8 +320,8 @@ def add_event(ical2gcal,cal_id):
             err += "Event id: %s\n"%(ical2gcal['id'])
             err += "Title: %s\n"%(ical2gcal['summary'])
             #raise Exception(err)
-            print(err)
-            print("Continuing...\n")
+            logging.error(err)
+            logging.error("Continuing...\n")
             # Return this event as failed
             return ical2gcal
 
@@ -335,9 +337,9 @@ def rm_event(ical2gcal,cal_id):
     service = get_service()
     try:
         service.events().delete(calendarId=cal_id, eventId=ical2gcal['id'], sendNotifications=False)
-        print("Successfully deleted event!")
-        print("Calendar id: %s"%(cal_id))
-        print("Event id: %s"%(ical2gcal['id']))
+        logging.info("Successfully deleted event!")
+        logging.info("Calendar id: %s"%(cal_id))
+        logging.info("Event id: %s"%(ical2gcal['id']))
 
     except apiclient.errors.HttpError:
         err = "ERROR: Could not delete event with event id: %s\n"%(ical2gcal['id'])
@@ -346,8 +348,8 @@ def rm_event(ical2gcal,cal_id):
         err += "Event id: %s\n"%(ical2gcal['id'])
         err += "Title: %s\n"%(gcal['summary'])
         #raise Exception(err)
-        print(err)
-        print("Continuing...\n")
+        logging.error(err)
+        logging.error("Continuing...\n")
         # Return this event as failed
         return ical2gcal
 
@@ -355,7 +357,7 @@ def rm_event(ical2gcal,cal_id):
 
 
 
-def sync_events(gcal,ical,cal_id):
+def sync_events(gcal, ical, cal_id, force_sync=False):
     """
     For two given events (one Google Calendar, one ical VEVENT),
     bring the Google Calendar event up to date with the 
@@ -363,7 +365,7 @@ def sync_events(gcal,ical,cal_id):
 
     Not sure what we are returning.
     """
-    print("Comparing ical and Google Calendar for event %s:"%(gcal['description']))
+    logging.info("Comparing ical and Google Calendar for event %s:"%(gcal['description']))
 
     service = get_service()
 
@@ -461,6 +463,9 @@ def sync_events(gcal,ical,cal_id):
                     what_changed.append(ik)
                     update_gcal = True
 
+    # In case we want to force two events to sync
+    if not was_event_changed and force_sync:
+        was_event_changed = True
 
     # We got here because we either:
     # 1. Found two keys that are different
@@ -471,23 +476,23 @@ def sync_events(gcal,ical,cal_id):
         # 
         # Update the gcal object, then call the
         # API with it. (Do we have the calendar id?)
-        print("Need to update event:")
-        print("    id: %s"%(gcal['id']))
-        print("    title: %s"%(gcal['summary']))
-        print("    fields changed: %s"%(", ".join(what_changed)))
+        logging.info("Need to update event:")
+        logging.info("    id: %s"%(gcal['id']))
+        logging.info("    title: %s"%(gcal['summary']))
+        logging.info("    fields changed: %s"%(", ".join(what_changed)))
         for field in what_changed:
-            print("        key: %s"%(field))
-            print("            gcal: %s"%(gcal[field]))
-            print("            ical: %s"%(ical[field]))
+            logging.info("        key: %s"%(field))
+            logging.info("            gcal: %s"%(gcal[field]))
+            logging.info("            ical: %s"%(ical[field]))
             gcal[field] = ical[field]
 
         try:
             # https://developers.google.com/resources/api-libraries/documentation/calendar/v3/python/latest/calendar_v3.events.html#update
             service.events().update(calendarId=cal_id, eventId=gcal['id'], body=gcal).execute()
-            print("Successfully updated event!")
-            print("Calendar id: %s"%(cal_id))
-            print("Event id: %s"%(gcal['id']))
-            print("Title: %s"%(gcal['summary']))
+            logging.info("Successfully updated event!")
+            logging.info("Calendar id: %s"%(cal_id))
+            logging.info("Event id: %s"%(gcal['id']))
+            logging.info("Title: %s"%(gcal['summary']))
             return True
 
         except apiclient.errors.HttpError:
@@ -498,8 +503,8 @@ def sync_events(gcal,ical,cal_id):
                 err += "Event id: %s\n"%(gcal['id'])
                 err += "Title: %s\n"%(gcal['summary'])
                 #raise Exception(err)
-                print(err)
-                print("Continuing...\n")
+                logging.error(err)
+                logging.error("Continuing...\n")
                 return False
             else:
                 err = "ERROR: Could not create event with event id: %s\n"%(gcal['id'])
@@ -508,14 +513,14 @@ def sync_events(gcal,ical,cal_id):
                 err += "Event id: %s\n"%(gcal['id'])
                 err += "Title: %s\n"%(gcal['summary'])
                 #raise Exception(err)
-                print(err)
-                print("Continuing...\n")
+                logging.error(err)
+                logging.error("Continuing...\n")
                 return False
 
-        print("\n")
+        logging.info("\n")
 
     else:
-        print("Nothing to be updated.")
+        logging.info("Nothing to be updated.")
         return False
 
 
@@ -533,13 +538,14 @@ def create_gcal(summary,timeZone="America/New_York"):
     """
     if summary=="":
         err = "ERROR: Calendar summary was empty"
+        logging.error(err)
         raise Exception(err)
 
     calendar_id = get_named_calendar_id(summary)
 
     if calendar_id is not None:
         # Already created a calendar, so load its id
-        print("Found an existing \"%s\" calendar with id %s"%(summary,calendar_id))
+        logging.info("Found an existing \"%s\" calendar with id %s"%(summary,calendar_id))
         return calendar_id
     else:
         # This calendar does not yet exist, so let's create it
@@ -554,13 +560,14 @@ def create_gcal(summary,timeZone="America/New_York"):
             }
             created_calendar = service.calendars().insert(body=calendar).execute()
             calendar_id = created_calendar['id']
-            print("Finished creating a calendar \"%s\" with id %s"%(created_calendar['summary'],created_calendar['id']))
+            logging.info("Finished creating a calendar \"%s\" with id %s"%(created_calendar['summary'],created_calendar['id']))
             return calendar_id
 
         except client.AccessTokenRefreshError:
             err = 'ERROR: Could not create test calendar\n'
             err += 'The credentials have been revoked or expired, please re-run '
             err += 'the application to re-authorize.'
+            logging.error(err)
             raise Exception(err)
 
     return calendar_id
@@ -581,28 +588,29 @@ def populate_gcal_from_components_map(calendar_id, components_map):
     """
     if calendar_id is None:
         err = "ERROR: You passed a null calendar_id to populate_gcal_from_components_map()"
+        logging.error(err)
         raise Exception(err)
 
     # Get API
     service = get_service()
 
-    print("Populating Google Calendar with events from components_map...")
-    print("Calendar id: %s"%(calendar_id))
+    logging.info("Populating Google Calendar with events from components_map...")
+    logging.info("Calendar id: %s"%(calendar_id))
     for k in components_map.keys():
-        print("-"*40)
-        print("Processing event %s"%k)
+        logging.info("-"*40)
+        logging.info("Processing event %s"%k)
         e = components_map[k]
         try:
             gce = ics2gcal_event(e)
             add_event(gce,calendar_id)
         except:
-            print("XXX Failed to convert event to JSON")
+            logging.error("XXX Failed to convert event to JSON")
             traceback.print_exc()
             continue
 
     gcm = gcal_components_map(calendar_id)
-    print("Done populating Google Calendar:")
-    print("Started with %d events, added %d of them"%(
+    logging.info("Done populating Google Calendar:")
+    logging.info("Started with %d events, added %d of them"%(
         len(components_map.keys()), 
         len(gcm.keys())
     ))
@@ -641,6 +649,7 @@ def ics2gcal_event(vevent):
     if 'UID' not in vevent.keys():
         err = "ERROR: Passed a vevent to ics2gcal_event() that has no UID!\n"
         err += vevent.to_ical().decode('utf-8')
+        logging.error(err)
         raise Exception(err)
 
     timezone = 'UTC'
@@ -650,7 +659,7 @@ def ics2gcal_event(vevent):
     enddt =   utc.localize(datetime.datetime.strptime(vevent_decode(vevent['DTEND']),   "%Y%m%dT%H%M%SZ"))
 
     event_id = get_safe_event_id(vevent_decode(vevent['UID']))
-    description = get_event_url(vevent)
+    description = htmlify_event_url(vevent)
 
     keys = ['SUMMARY','SEQUENCE','LOCATION','ORGANIZER']
     for key in keys:
