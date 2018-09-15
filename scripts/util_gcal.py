@@ -226,13 +226,14 @@ def update_gcal_from_components_map(cal_id, components_map, force_sync=False):
             ical_event = ics2gcal_event(ical_events[eid])
         except:
             logging.exception("XXX Failed to convert event to JSON")
+            traceback.print_exc()
+            logging.error("Life goes on. Continuing...")
             continue
         logging.info("-"*40)
         logging.info("Adding event %s"%(eid))
         logging.info("Title: %s"%(ical_event['summary']))
         failure = add_event(ical_event,cal_id)
         if failure is None:
-            logging.info("XXX Add event returned None")
             continue
         else:
             add_failures.append(failure)
@@ -276,6 +277,7 @@ def update_gcal_from_components_map(cal_id, components_map, force_sync=False):
             ical_event = ics2gcal_event(ical_events[eid])
         except:
             logging.exception("XXX Failed to convert ics to google calendar event")
+            logging.error("Life goes on. Continuing...")
             continue
         logging.info("-"*40)
         logging.info("Syncing event %s"%(eid))
@@ -464,7 +466,7 @@ def sync_events(gcal, ical, cal_id, force_sync=False):
                     update_gcal = True
 
     # In case we want to force two events to sync
-    if not was_event_changed and force_sync:
+    if was_event_changed is False and force_sync is True:
         was_event_changed = True
 
     # We got here because we either:
@@ -545,7 +547,7 @@ def create_gcal(summary,timeZone="America/New_York"):
 
     if calendar_id is not None:
         # Already created a calendar, so load its id
-        logging.info("Found an existing \"%s\" calendar with id %s"%(summary,calendar_id))
+        logging.info("Found an existing calendar \"%s\" with calendar id %s"%(summary,calendar_id))
         return calendar_id
     else:
         # This calendar does not yet exist, so let's create it
@@ -606,6 +608,7 @@ def populate_gcal_from_components_map(calendar_id, components_map):
         except:
             logging.error("XXX Failed to convert event to JSON")
             traceback.print_exc()
+            logging.error("Life goes on. Continuing...")
             continue
 
     gcm = gcal_components_map(calendar_id)

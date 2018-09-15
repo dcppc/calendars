@@ -1,3 +1,4 @@
+import logging
 from icalendar import Calendar, Event
 import re, os
 import requests
@@ -115,6 +116,7 @@ def ics_components_generator(ics):
             yield e
 
 
+
 def get_event_url(vevent):
     """
     Given a VEVENT object, extract the subgroup name 
@@ -124,6 +126,7 @@ def get_event_url(vevent):
     if vevent.name != 'VEVENT':
         err = 'Error: get_event_url() was called on something that is not a VEVENT!\n'
         err += 'Check the calling script and try again.'
+        logging.error(err)
         raise Exception(err)
 
     # Get subgroup name from organizer
@@ -143,15 +146,37 @@ def get_event_url(vevent):
 
 
 
+
+def htmlify_event_url(vevent):
+    """
+    Given a VEVENT object, create a permalink to it
+    on groups.io and return a string of the form:
+
+    <a href="...groupsiolink...">...groupsiolink...</a>
+    """
+    if vevent.name != 'VEVENT':
+        err = 'Error: htmlify_event_url() was called on something that is not a VEVENT!\n'
+        err += 'Check the calling script and try again.'
+        logging.error(err)
+        raise Exception(err)
+
+    event_url = get_event_url(vevent)
+
+    html = '<a href="%s">%s</a>'%(event_url,event_url)
+
+    return html
+
+
+
 def get_ical_contents(ics_file):
     """
     Given an .ics file, extract the contents as a string
     """
-    print("Extracting contents of calendar in .ics file %s"%(ics_file))
+    logging.info("Extracting contents of calendar in .ics file %s"%(ics_file))
     with open(ics_file,'r') as f:
         result = f.read()
         #result = re.sub('\r\n','\n',result)
-    print("Done extracting contents.")
+    logging.info("Done extracting contents.")
     return result
 
 
@@ -162,7 +187,7 @@ def get_calendar_contents(ics_url):
     and returns the .ics file contents as a string
     """
     url = ics_url.strip()
-    print("Extracting contents of calendar at URL %s"%(url))
+    logging.info("Extracting contents of calendar at URL %s"%(url))
     r = requests.get(url)
 
     if r.status_code==200:
@@ -174,16 +199,16 @@ def get_calendar_contents(ics_url):
         content = r.content
         try:
             result = content.decode('utf-8')
-            print(" [+] Success!")
+            logging.info(" [+] Success!")
             return result
 
         except UnicodeDecodeError:
             result = content.decode('ISO-8859-1')
-            print(" [+] Success!")
+            logging.info(" [+] Success!")
             return result
     else:
-        print(" [-] FAILED with status code %s"%(r.status_code))
-        print(r.content.decode('utf-8'))
+        logging.info(" [-] FAILED with status code %s"%(r.status_code))
+        logging.info(r.content.decode('utf-8'))
         return None
 
 

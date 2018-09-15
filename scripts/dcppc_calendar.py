@@ -1,3 +1,5 @@
+import subprocess
+import logging
 import argparse
 import os
 import sys
@@ -6,6 +8,14 @@ from util_gcal import *
 
 
 basename = os.path.split(os.path.abspath(__file__))[0]
+
+subprocess.call(['mkdir','-p','/tmp/calendars'])
+logging.basicConfig(filename='/tmp/calendars/dcppc_calendar.log',
+                    filemode='a',
+                    level=logging.INFO)
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+logging.getLogger('').addHandler(console)
 
 
 """
@@ -48,7 +58,9 @@ def main():
 
 
 def die(parser):
-    """Print parser help and die"""
+    """
+    Print parser help and die
+    """
     parser.print_help(sys.stderr)
     exit(1)
 
@@ -67,17 +79,22 @@ def parse_args():
     parser.add_argument(
             '-c', '--create', 
             action='store_true',
-            help='(REQUIRED) Create a new Google Calendar with integrated calendar events'
+            help='(REQUIRED, use one of -c or -u) Create a new Google Calendar with integrated calendar events'
     )
     parser.add_argument(
             '-u', '--update', 
             action='store_true',
-            help='(REQUIRED) Update (sync) an existing Google Calendar with integrated calendar events'
+            help='(REQUIRED, use one of -c or -u) Update (sync) an existing Google Calendar with integrated calendar events'
     )
     parser.add_argument(
             '-i', '--ical-list', 
             required = True,
-            help='(REQUIRED) Name of a file containing a list of .ics URLs, one per line'
+            help='(REQUIRED) Name of a file containing a list of Groups.io .ics URLs, one per line'
+    )
+    parser.add_argument(
+            '-f', '--force-sync', 
+            action='store_true',
+            help='(OPTIONAL, use with -u) Force every event on the calendar to synchronize, regardless of whether there are changes.'
     )
     parser.add_argument(
             '-n', '--name', 
@@ -89,9 +106,9 @@ def parse_args():
     validate(parser)
 
     if args.create:
-        print("Creating calendar \"%s\""%args.name)
+        logging.info("Creating calendar \"%s\""%args.name)
     elif args.update:
-        print("Updating calendar \"%s\""%args.name)
+        logging.info("Updating calendar \"%s\""%args.name)
     else:
         die(parser)
 
@@ -106,25 +123,36 @@ def validate(parser):
     if (args.create and args.update):
         err = "ERROR: both create and update arguments were specified."
         err += "You must specify one or the other.\n"
-        print(err)
+        logging.error(err)
         die(parser)
 
     if ((not args.create) and (not args.update)):
         err = "ERROR: Neither create nor update arguments were specified."
         err += "You must specify one or the other.\n"
-        print(err)
+        logging.error(err)
         die(parser)
+
+    if args.create and args.force_sync:
+        warning = "WARNING: Ignoring --force flag used with --create flag. "
+        warning += "--force only works with --update."
+        logging.warn(warning)
 
     try:
         if not os.path.isfile(args.ical_list):
             err = "ERROR: Could not find ical list file at %s "%(args.ical_list)
+            logging.error(err)
             raise ValidationException(err)
     except TypeError:
         err = "ERROR: Malformed argument provided for --ical-list: %s"%(args.ical_list)
+        logging.error(err)
         raise ValidationException(err)
 
-def create_calendar(args):
 
+def create_calendar(args):
+    """
+    Create the Google Calendar and populate it with events
+    from the iCal feeds.
+    """
     # create the calendar and return the calendar id
     calendar_id = create_gcal(args.name)
 
@@ -139,16 +167,21 @@ def create_calendar(args):
         contents = get_calendar_contents(ical_url)
         components_map = ics_components_map(contents, components_map)
 
-    print("Preparing to add %d events to the calendar."%len(components_map.keys()))
+    logging.info("Preparing to add %d events to the calendar."%len(components_map.keys()))
 
     # add each event to google calendar
     populate_gcal_from_components_map(calendar_id, components_map)
 
 
 def update_calendar(args):
-
+    """
+    Update the Google Calendar with events from the iCal feeds.
+    """
     # return the calendar id
     calendar_id = create_gcal(args.name)
+
+    # to force or not to force
+    force_sync = args.force_sync
 
     # get all icals
     icals = []
@@ -160,10 +193,10 @@ def update_calendar(args):
     for ical_url in icals:
         components_map = ics_components_map(get_calendar_contents(ical_url), components_map)
 
-    print("Preparing to update %d events on the calendar."%len(components_map.keys()))
+    logging.info("Preparing to update %d events on the calendar."%len(components_map.keys()))
 
     # add each event to google calendar
-    update_gcal_from_components_map(calendar_id, components_map)
+    update_gcal_from_components_map(calendar_id, components_map, force_sync)
 
 
 if __name__=="__main__":
