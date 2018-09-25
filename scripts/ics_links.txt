@@ -1,3 +1,4 @@
+https://dcppc.groups.io/g/main/ics/2242649/1234987694/feed.ics
 https://dcppc.groups.io/g/data-stewards/ics/2281001/1795002230/feed.ics
 https://dcppc.groups.io/g/dgwg-kc8/ics/2281002/1402652195/feed.ics
 https://dcppc.groups.io/g/FSWG/ics/1175427/385444226/feed.ics
@@ -12,4 +13,3 @@ https://dcppc.groups.io/g/kc8/ics/1136945/645467796/feed.ics
 https://dcppc.groups.io/g/kc9-training/ics/1346871/460223781/feed.ics
 https://dcppc.groups.io/g/leads/ics/909743/916490208/feed.ics
 https://dcppc.groups.io/g/project-managers/ics/2928456/1703584444/feed.ics
-https://dcppc.groups.io/g/main/ics/2242649/1234987694/feed.ics
