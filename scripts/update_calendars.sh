@@ -4,12 +4,14 @@
 # you'd like the calendars to be updated...
 
 CALENDARS_DIR="/home/ubuntu/calendars"
-DONE="`date +%Y%m%d_%H%M%S`"
 
 cd $CALENDARS_DIR
 virtualenv vp
 source vp/bin/activate
 pip install -r requirements.txt
 cd scripts/
-python dcppc_calendar.py -u -i ics_links.txt &> /tmp/calendars_done_${DONE}
+python dcppc_calendar.py -u -i ics_links.txt
+
+DONE="`date +%Y%m%d_%H%M%S`"
+touch /tmp/calendars/_calendars_done_${DONE}
 
