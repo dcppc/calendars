@@ -1,5 +1,5 @@
 icalendar
 requests>=2.19
 apiclient>=1.0.3
-oauth2client>=3.0.0
+oauth2client==3.0.0
 google-api-python-client
