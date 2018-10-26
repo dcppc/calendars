@@ -11,6 +11,8 @@
 
 REPOURL="git@github.com:dcppc/calendars"
 
+mkdir -p /www/calendars.nihdatacommons.us
+
 git -C /www/calendars.nihdatacommons.us \
     clone \
     --separate-git-dir=git \
